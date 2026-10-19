@@ -51,14 +51,16 @@ const built = build.status === 0 && existsSync(join(pkgDir, 'dist', 'index.html'
 rmSync(join(pkgDir, 'dist', '_headers'), { force: true });
 
 // 3. Source, minus dependencies, build output and the brief itself (the brief lives in brief/).
-const SKIP_DIRS = new Set(['node_modules', 'dist', '.git', 'reference', '.vite']);
+//    Hidden folders are skipped too: models that may not leave their folder put npm caches,
+//    Playwright browsers and browser profiles there (.npm-cache, .browsers, ...), hundreds of MB each.
+const SKIP_DIRS = new Set(['node_modules', 'dist', 'reference', 'test-results', 'playwright-report']);
 const SKIP_FILES = new Set(['prompt.txt']);
 cpSync(runDir, join(pkgDir, 'source'), {
   recursive: true,
   filter: (src) => {
     const name = basename(src);
     if (src === runDir) return true;
-    if (statSync(src).isDirectory()) return !SKIP_DIRS.has(name);
+    if (statSync(src).isDirectory()) return !SKIP_DIRS.has(name) && !name.startsWith('.');
     return !SKIP_FILES.has(name) && !name.endsWith('.tsbuildinfo');
   },
 });
