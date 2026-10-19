@@ -48,7 +48,8 @@ export function validate(dir, others = []) {
   }
   for (const o of others) {
     if (o.slug === m.slug) continue;
-    for (const k of m.storageKeys ?? []) if (o.storageKeys?.includes(k)) errors.push(`storage key "${k}" is also used by ${o.slug}`);
+    // The hub namespaces each game's localStorage by slug, so a shared key name is harmless there.
+    for (const k of m.storageKeys ?? []) if (o.storageKeys?.includes(k)) warnings.push(`storage key "${k}" is also used by ${o.slug} (the hub isolates it per game)`);
     if (o.model?.family === m.model?.family && o.model?.effort === m.model?.effort) {
       warnings.push(`${o.slug} is also ${m.model.family} at ${m.model.effort}; the hub picker shows one per effort`);
     }

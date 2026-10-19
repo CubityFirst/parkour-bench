@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROOFTOP FLOW</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game-canvas"></canvas>
+
+      <!-- HUD: minimal, shown while playing -->
+      <div id="hud" class="hidden">
+        <div id="crosshair"></div>
+        <div id="timer">0:00.000</div>
+        <div id="checkpoint-msg" class="toast"></div>
+        <div id="hint" class="hint"></div>
+        <div id="speed">SPD 0</div>
+      </div>
+
+      <!-- Main menu -->
+      <div id="menu" class="overlay">
+        <div class="panel">
+          <h1 class="title">ROOFTOP<span class="accent">FLOW</span></h1>
+          <p class="subtitle">A parkour run across the white rooftops</p>
+          <div class="button-col">
+            <button id="btn-start" class="btn primary">Start Game</button>
+            <button id="btn-controls" class="btn">Controls</button>
+          </div>
+          <div class="settings">
+            <label>
+              Mouse sensitivity
+              <span id="sens-value">1.00</span>
+              <input id="sens" type="range" min="0.2" max="3" step="0.05" value="1" />
+            </label>
+            <label class="check">
+              <input id="reduce-motion" type="checkbox" />
+              Reduce camera motion
+            </label>
+          </div>
+          <p class="best">Best time: <span id="best-menu">--</span></p>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div id="controls" class="overlay hidden">
+        <div class="panel">
+          <h2>Controls</h2>
+          <table class="controls-table">
+            <tr><td>WASD</td><td>Move</td></tr>
+            <tr><td>Mouse</td><td>Look around</td></tr>
+            <tr><td>Shift</td><td>Sprint</td></tr>
+            <tr><td>Space</td><td>Jump (hold for higher jump)</td></tr>
+            <tr><td>Ctrl / C</td><td>Slide (while running)</td></tr>
+            <tr><td>E</td><td>Vault / mantle</td></tr>
+            <tr><td>Hold toward wall in air</td><td>Wall run</td></tr>
+            <tr><td>R</td><td>Restart from checkpoint</td></tr>
+            <tr><td>Esc</td><td>Pause</td></tr>
+          </table>
+          <button id="btn-controls-back" class="btn">Back</button>
+        </div>
+      </div>
+
+      <!-- Pause -->
+      <div id="pause" class="overlay hidden">
+        <div class="panel">
+          <h2>Paused</h2>
+          <div class="button-col">
+            <button id="btn-resume" class="btn primary">Resume</button>
+            <button id="btn-pause-restart" class="btn">Restart from checkpoint</button>
+            <button id="btn-pause-menu" class="btn">Main menu</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finish screen -->
+      <div id="finish" class="overlay hidden">
+        <div class="panel">
+          <h2 class="complete">LEVEL COMPLETE</h2>
+          <p>Time <span id="finish-time" class="big">0:00.000</span></p>
+          <p>Best <span id="finish-best" class="big">--</span></p>
+          <p id="finish-note" class="best"></p>
+          <div class="button-col">
+            <button id="btn-finish-restart" class="btn primary">Restart</button>
+            <button id="btn-finish-menu" class="btn">Main menu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

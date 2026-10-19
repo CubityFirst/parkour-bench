@@ -135,6 +135,6 @@ console.log(`  build ${built ? 'ok' : 'FAILED'}, typecheck ${typecheck}, start b
 console.log(`  page errors ${shots.pageErrors.length}, console errors ${shots.consoleErrors.length}, mis-encoded chars ${shots.replacementChars}`);
 for (const e of [...shots.pageErrors, ...shots.consoleErrors].slice(0, 5)) console.log(`    ${e}`);
 console.log(`  storage keys: ${keys.join(', ') || '(none found)'}`);
-if (clashes.length) console.log(`  STORAGE KEY CLASH: ${clashes.join('; ')}`);
+if (clashes.length) console.log(`  shared storage key names (fine: the hub isolates storage per game): ${clashes.join('; ')}`);
 console.log(`  screenshots: packages/${slug}/screenshots/ (${shots.frames.join(', ')})`);
 console.log(`next: look at the screenshots, then node tools/verdict.mjs ${slug} --grounded <bool> --moves <bool> --notes "..."`);

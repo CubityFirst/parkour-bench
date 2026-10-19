@@ -51,7 +51,7 @@ packages/<slug>/
 | `status` | `complete`: finished and verified. `partial`: playable but unfinished, or stopped by a quota. `failed`: doesn't build or can't be played. The hub only lists `complete` and `partial`. |
 | `model.family` | Display name. The hub groups packages with the same family onto one card with an effort picker. |
 | `model.effort` | `low`, `medium`, `high`, `xhigh` or `max`. |
-| `storageKeys` | localStorage keys the game uses. The packager detects them; they must not clash with any other package's keys, because every game shares one origin. |
+| `storageKeys` | localStorage keys the game uses, as detected by the packager. Every game shares one origin, so the hub namespaces each game's localStorage under `<slug>:`; two packages may use the same key name. |
 | `build.typecheck` | `pass`, `fail` or `skipped`. A failed typecheck is recorded, not fatal: the hub only needs `dist/`. |
 | `verification.pageErrors` | Uncaught page errors seen in headless Chrome. |
 | `verification.replacementChars` | Count of `�` in the rendered page text. More than 0 means mis-encoded source. |
