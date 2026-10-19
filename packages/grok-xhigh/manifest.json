@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "grok-xhigh",
+  "title": "Rooftop Flow",
+  "blurb": "Rooftop run with checkpoints and a pause menu that can jump back to the last one.",
+  "model": {
+    "family": "Grok 4.7",
+    "id": "grok-4.7",
+    "provider": "grok",
+    "effort": "xhigh"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T23:22:09.905Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow-best-ms",
+    "rooftop-flow-settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof (hands, red ROOFTOP FLOW sign); sprint reaches the first red block with a vault prompt. Run stayed open after its summary; packaged from disk."
+  },
+  "fixRounds": [],
+  "notes": ""
+}
