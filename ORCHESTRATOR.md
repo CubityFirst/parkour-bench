@@ -37,7 +37,9 @@ substitute silently.
   - "requires Global regions": the workspace's Privacy region setting.
   - "Insufficient account funds": pay-per-use credit is empty.
 - **Concurrency:** five OpenCode Go runs in parallel used up the Go usage cap in about
-  20 minutes, so run **at most 2 Go jobs at once**. Codex handled 5 at once. If a run
+  20 minutes, so run **at most 2 Go jobs at once**. The Grok subscription (`grok`
+  provider) hit "Grok usage limit reached" with 4 runs at once, and again with 4 in flight
+  after a reset, so run **1 Grok job at a time**. Codex and Claude each handled 5 at once. If a run
   stops with "usage limit exceeded", stop starting new runs on that provider, and tell
   the user which runs are left and how far each got.
 

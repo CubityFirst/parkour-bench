@@ -4,5 +4,5 @@
     { "provider": "opencode", "model": "opencode-go/kimi-k3", "family": "Kimi K3", "short": "kimi", "efforts": ["max"] },
     { "provider": "opencode", "model": "opencode-go/glm-5.3-flash", "family": "GLM-5.3-Flash", "short": "glm", "efforts": ["high"] }
   ],
-  "concurrency": { "codex": 5, "opencode-go": 2, "default": 3 }
+  "concurrency": { "codex": 5, "claudeAgent": 5, "opencode-go": 2, "grok": 1, "default": 3 }
 }
