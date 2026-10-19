@@ -68,6 +68,18 @@ instead of loosening anything yourself.
 Keep a table of slug → taskId → childThreadId. End your turn after starting a batch;
 completion notifications wake you.
 
+### Leftover dev servers
+
+Models often leave `npm run dev` running "for the user to play". On the Grok provider, that
+kept the run open long after the final summary. Stopping the server let the run close as
+completed. Parallel runs also collide on Vite's default port: two Grok runs both served on
+5174 (one IPv4, one IPv6), so a model's own browser test may have hit another model's game.
+`package-run.mjs` serves each build on its own free port, so packaging tests aren't affected.
+
+If a run stays "running" with no new activity, read the end of its thread. If it has already
+posted a final summary, find the server (a `node … runs\<slug>\…\vite` process) and stop it.
+Never stop a process that doesn't belong to a run you started.
+
 ## 5. When a run finishes
 
 1. Read `task_status`.
