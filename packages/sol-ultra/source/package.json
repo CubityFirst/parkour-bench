@@ -1,0 +1,23 @@
+{
+  "name": "stride-rooftop-runner",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node scripts/check-movement.mjs",
+    "test:browser": "node scripts/browser-smoke.mjs",
+    "test:route": "node scripts/verify-route.mjs"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.180.0",
+    "@playwright/test": "^1.56.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9"
+  }
+}

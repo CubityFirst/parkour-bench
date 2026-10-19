@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "slug": "astra-high",
+  "title": "UPSHIFT",
+  "blurb": "650 m first-person course over 14 rooftops in six sectors, with checkpoints.",
+  "model": {
+    "family": "Astra",
+    "id": "gpt-6-astra",
+    "provider": "codex",
+    "effort": "high"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T21:06:48.913Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "upshift-best",
+    "upshift-motion",
+    "upshift-sensitivity",
+    "upshift-sound"
+  ],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Spawns standing on the start roof at the START HERE marking; idle 500/2000/5000 identical. Sprint carries the player ~20 m forward to the first red vault block, where it stops (speed 0) as designed: vaulting needs E. No page errors, no mis-encoded text."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

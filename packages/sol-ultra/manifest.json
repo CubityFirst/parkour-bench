@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "slug": "sol-ultra",
+  "title": "STRIDE",
+  "blurb": "Six-section rooftop course with wall-runs, vaults, slides and checkpoints.",
+  "model": {
+    "family": "GPT-6.1-Sol",
+    "id": "gpt-6.1-sol",
+    "provider": "codex",
+    "effort": "ultra"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T21:00:54.892Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "stride-best",
+    "stride-settings"
+  ],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Spawns standing on the start roof (idle 500/5000 identical); sprint reaches 43 km/h and stops at the first red vault barrier with an E-to-vault prompt."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

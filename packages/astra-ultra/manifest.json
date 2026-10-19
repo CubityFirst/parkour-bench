@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "slug": "astra-ultra",
+  "title": "REDLINE",
+  "blurb": "Six-sector rooftop run with wall-running, slides, vaults, checkpoints and best times.",
+  "model": {
+    "family": "Astra",
+    "id": "gpt-6-astra",
+    "provider": "codex",
+    "effort": "ultra"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T21:04:01.188Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "redline.best",
+    "redline.settings"
+  ],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on start roof, idle view stable; sprint carries ~19 m to the red vault barrier (needs E), where it stops."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

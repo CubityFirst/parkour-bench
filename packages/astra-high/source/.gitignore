@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.npm-cache/
+.playwright/
+.browser-*/
+.tmp/
+artifacts/
+.DS_Store
