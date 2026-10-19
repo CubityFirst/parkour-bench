@@ -52,6 +52,7 @@ packages/<slug>/
 | `model.family` | Display name. The hub groups packages with the same family onto one card with an effort picker. |
 | `model.effort` | `low`, `medium`, `high`, `xhigh` or `max`. |
 | `storageKeys` | localStorage keys the game uses, as detected by the packager. Every game shares one origin, so the hub namespaces each game's localStorage under `<slug>:`; two packages may use the same key name. |
+| `storageDirect` | Keys the game reads or writes by direct property access (`localStorage.best`, `localStorage['best']`). The hub's isolation can't namespace these, so the validator fails the package if one matches another package's key. |
 | `build.typecheck` | `pass`, `fail` or `skipped`. A failed typecheck is recorded, not fatal: the hub only needs `dist/`. |
 | `verification.pageErrors` | Uncaught page errors seen in headless Chrome. |
 | `verification.replacementChars` | Count of `�` in the rendered page text. More than 0 means mis-encoded source. |

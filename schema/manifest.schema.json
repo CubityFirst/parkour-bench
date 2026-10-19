@@ -29,6 +29,7 @@
     "entry": { "const": "dist/index.html" },
     "thumbnail": { "const": "thumbnail.webp" },
     "storageKeys": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "storageDirect": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
     "build": {
       "type": "object",
       "required": ["command", "ok", "typecheck"],

@@ -64,6 +64,7 @@ cpSync(runDir, join(pkgDir, 'source'), {
 });
 
 // 4. localStorage keys: literal keys passed to localStorage, plus string constants named *key* in files that use it.
+const direct = new Set();
 function storageKeys() {
   if (typeof args['storage-keys'] === 'string') return args['storage-keys'].split(',').map((s) => s.trim()).filter(Boolean);
   const keys = new Set();
@@ -75,6 +76,9 @@ function storageKeys() {
       const text = readFileSync(p, 'utf8');
       if (!text.includes('localStorage')) continue;
       for (const m of text.matchAll(/localStorage\.(?:get|set|remove)Item\(\s*(['"`])([^'"`$]+)\1/g)) keys.add(m[2]);
+      // Direct property access (localStorage.best, localStorage['best']) bypasses the hub's per-game isolation.
+      for (const m of text.matchAll(/localStorage\.(?!getItem\b|setItem\b|removeItem\b|key\b|clear\b|length\b)([A-Za-z_$][\w$]*)/g)) { keys.add(m[1]); direct.add(m[1]); }
+      for (const m of text.matchAll(/localStorage\[\s*(['"`])([^'"`$]+)\1\s*\]/g)) { keys.add(m[2]); direct.add(m[2]); }
       for (const m of text.matchAll(/\b\w*key\w*\s*[:=]\s*(['"`])([A-Za-z][\w.:-]{3,})\1/gi)) {
         if (/[-.:_]/.test(m[2]) && !/^(Key|Digit|Arrow|Shift|Control|Alt|Meta|Space)/.test(m[2])) keys.add(m[2]);
       }
@@ -117,6 +121,7 @@ const manifest = {
   entry: 'dist/index.html',
   thumbnail: 'thumbnail.webp',
   storageKeys: keys,
+  storageDirect: [...direct].sort(),
   build: { command: 'vite build --base ./', ok: built, typecheck },
   verification: {
     pageErrors: shots.pageErrors,
@@ -135,6 +140,7 @@ console.log(`  build ${built ? 'ok' : 'FAILED'}, typecheck ${typecheck}, start b
 console.log(`  page errors ${shots.pageErrors.length}, console errors ${shots.consoleErrors.length}, mis-encoded chars ${shots.replacementChars}`);
 for (const e of [...shots.pageErrors, ...shots.consoleErrors].slice(0, 5)) console.log(`    ${e}`);
 console.log(`  storage keys: ${keys.join(', ') || '(none found)'}`);
+if (direct.size) console.log(`  WARNING: direct localStorage property access (${[...direct].join(', ')}); the hub can't isolate these keys`);
 if (clashes.length) console.log(`  shared storage key names (fine: the hub isolates storage per game): ${clashes.join('; ')}`);
 console.log(`  screenshots: packages/${slug}/screenshots/ (${shots.frames.join(', ')})`);
 console.log(`next: look at the screenshots, then node tools/verdict.mjs ${slug} --grounded <bool> --moves <bool> --notes "..."`);
