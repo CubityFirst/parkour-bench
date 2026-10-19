@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ROOFTOP FLOW - a first-person rooftop parkour game for the browser." />
+    <meta name="theme-color" content="#ffffff" />
+    <title>ROOFTOP FLOW</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fff'/%3E%3Cpath d='M4 24 L16 6 L28 24 Z' fill='%23e0231c'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game" tabindex="-1"></canvas>
+
+      <div id="speedfx" aria-hidden="true"></div>
+      <div id="flash" aria-hidden="true"></div>
+
+      <!-- In-game HUD -->
+      <div id="hud" class="hidden" aria-live="polite">
+        <div id="crosshair" aria-hidden="true"></div>
+        <div id="timer">0:00.00</div>
+        <div id="progress"></div>
+        <div id="toast"></div>
+        <div id="hint"></div>
+      </div>
+      <pre id="debug" class="hidden"></pre>
+
+      <!-- Loading -->
+      <div id="loading" class="screen center">
+        <div class="logo small">ROOFTOP <span>FLOW</span></div>
+        <div class="loading-bar"><i></i></div>
+      </div>
+
+      <!-- Main menu -->
+      <div id="menu" class="screen hidden">
+        <div class="panel menu-panel">
+          <div class="eyebrow">First-person rooftop parkour</div>
+          <h1 class="title">ROOFTOP<br /><span>FLOW</span></h1>
+          <p class="lead">Sprint, slide, vault and wall-run across a white city in the sky.
+            Six sections. One line. Keep your momentum.</p>
+          <div class="button-row">
+            <button id="btn-start" class="btn primary">Start Game</button>
+            <button id="btn-controls" class="btn">Controls</button>
+          </div>
+          <div id="menu-settings"></div>
+          <div class="best-line">Best time <b id="menu-best">--:--.--</b></div>
+        </div>
+        <div class="footnote">Mouse is captured while playing &middot; <kbd>Esc</kbd> pauses</div>
+      </div>
+
+      <!-- Controls -->
+      <div id="controls" class="screen hidden">
+        <div class="panel controls-panel">
+          <h2>Controls</h2>
+          <table class="keys">
+            <tr><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></td><td>Move</td></tr>
+            <tr><td><kbd>Mouse</kbd></td><td>Look around</td></tr>
+            <tr><td><kbd>Shift</kbd></td><td>Sprint &mdash; higher top speed, longer jumps</td></tr>
+            <tr><td><kbd>Space</kbd></td><td>Jump &mdash; hold for height, release early for a short hop</td></tr>
+            <tr><td><kbd>Ctrl</kbd> / <kbd>C</kbd></td><td>Slide &mdash; while sprinting; slide under low ducts, jump out of it</td></tr>
+            <tr><td><kbd>E</kbd></td><td>Vault low obstacles / pull up onto ledges</td></tr>
+            <tr><td><kbd>R</kbd></td><td>Restart from the last checkpoint</td></tr>
+            <tr><td><kbd>Esc</kbd></td><td>Pause / release the mouse</td></tr>
+          </table>
+          <h3>Parkour tips</h3>
+          <ul class="tips">
+            <li><b>Wall run</b> &mdash; jump at a <em class="red">red wall</em> at speed and hold <kbd>W</kbd>. Press <kbd>Space</kbd> to kick off.</li>
+            <li><b>Ledge recovery</b> &mdash; if you land just below a rooftop edge, keep holding <kbd>W</kbd> to pull yourself up.</li>
+            <li><b>Momentum</b> &mdash; slides, vaults and clean landings keep your speed. Follow the red.</li>
+          </ul>
+          <div class="button-row"><button id="btn-controls-back" class="btn primary">Back</button></div>
+        </div>
+      </div>
+
+      <!-- Pause -->
+      <div id="pause" class="screen hidden">
+        <div class="panel pause-panel">
+          <div class="eyebrow">Paused</div>
+          <h2>Take a breath</h2>
+          <div class="button-col">
+            <button id="btn-resume" class="btn primary">Resume</button>
+            <button id="btn-restart-cp" class="btn">Restart from checkpoint</button>
+            <button id="btn-restart-level" class="btn">Restart level</button>
+            <button id="btn-pause-controls" class="btn">Controls</button>
+            <button id="btn-quit" class="btn ghost">Main menu</button>
+          </div>
+          <div id="pause-settings"></div>
+        </div>
+      </div>
+
+      <!-- Finish -->
+      <div id="finish" class="screen hidden">
+        <div class="panel finish-panel">
+          <div class="eyebrow red">Finish line crossed</div>
+          <h2 class="big">LEVEL COMPLETE</h2>
+          <div class="time-row">
+            <div><span class="label">Your time</span><b id="finish-time">0:00.00</b></div>
+            <div><span class="label">Best time</span><b id="finish-best">0:00.00</b></div>
+          </div>
+          <div id="finish-badge" class="badge hidden">New best!</div>
+          <div class="finish-meta" id="finish-meta"></div>
+          <div class="button-row">
+            <button id="btn-finish-restart" class="btn primary">Restart</button>
+            <button id="btn-finish-menu" class="btn">Main menu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "rooftop-flow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ROOFTOP FLOW - a Mirror's Edge inspired first-person rooftop parkour game built with Three.js, TypeScript and Vite.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "verify": "tsx scripts/verify-level.ts"
+  },
+  "dependencies": {
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.3",
+    "vite": "^8.3.4"
+  }
+}

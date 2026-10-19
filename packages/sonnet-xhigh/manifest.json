@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "sonnet-xhigh",
+  "title": "Rooftop Flow",
+  "blurb": "About 600 m in six sections with a catwalk bridge; the intended route takes ~65 s.",
+  "model": {
+    "family": "Sonnet 5.5",
+    "id": "claude-sonnet-5-5",
+    "provider": "claudeAgent",
+    "effort": "xhigh"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T23:36:26.410Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow.best-time.v1",
+    "rooftop-flow.settings.v1"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof; sprint clears the first low barrier and reaches the next red mast by 5 s. Red lattice masts with an electrical box closely match ref-2. Intended route ~65 s (first run inside the brief's 60-120 s)."
+  },
+  "fixRounds": [],
+  "notes": ""
+}
