@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "sonnet-low",
+  "title": "Rooftop Flow",
+  "blurb": "17 rooftops over six sections, from a tutorial roof to the red finish gate.",
+  "model": {
+    "family": "Sonnet 5.5",
+    "id": "claude-sonnet-5-5",
+    "provider": "claudeAgent",
+    "effort": "low"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T22:21:34.621Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftopflow.best",
+    "rooftopflow.settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof; sprint reaches the first red vault block with a vault prompt. Glass tower skyline."
+  },
+  "fixRounds": [],
+  "notes": ""
+}
