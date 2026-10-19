@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "slug": "grok-medium",
+  "title": "Rooftop Flow",
+  "blurb": "Vents, two wall-runs and a mantle to a red ledge; its test bot finishes cleanly.",
+  "model": {
+    "family": "Grok 4.7",
+    "id": "grok-4.7",
+    "provider": "grok",
+    "effort": "medium"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T23:17:23.400Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow-best",
+    "rooftop-flow-motion",
+    "rooftop-flow-sens"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof (blocky arms); sprint reaches the first red block with an E-vault prompt. Its own browser test may have hit grok-high's server (both used port 5174)."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ROOFTOP FLOW</title>
+    <script type="module" crossorigin src="./assets/index-DpW15uhw.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-tcFZKwPt.css">
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="view"></canvas>
+      <div id="hud" hidden>
+        <div id="crosshair"></div>
+        <div id="timer">0:00.00</div>
+        <div id="hint"></div>
+        <div id="look-hint" hidden>CLICK TO LOOK</div>
+        <div id="toast" hidden></div>
+        <div id="debug" hidden></div>
+        <div id="flash"></div>
+      </div>
+      <div id="pause" hidden>
+        <div class="panel">
+          <p class="eyebrow">PAUSED</p>
+          <h2>ROOFTOP FLOW</h2>
+          <p class="lede">Esc released the mouse. Resume to keep the run.</p>
+          <div class="row">
+            <button id="resume" class="primary" type="button">Resume</button>
+            <button id="restart" class="ghost" type="button">Restart Level</button>
+            <button id="quit" class="ghost" type="button">Quit to Menu</button>
+          </div>
+        </div>
+      </div>
+      <div id="finish" hidden>
+        <div class="panel">
+          <p class="eyebrow">FINISH</p>
+          <h2>LEVEL COMPLETE</h2>
+          <p id="finish-time" class="finish-time">0:00.00</p>
+          <p class="best">BEST <span id="finish-best">—</span></p>
+          <p id="finish-new" hidden>NEW BEST</p>
+          <div class="row">
+            <button id="finish-restart" class="primary" type="button">Restart</button>
+            <button id="finish-quit" class="ghost" type="button">Menu</button>
+          </div>
+        </div>
+      </div>
+      <div id="menu">
+        <div class="panel">
+          <p class="eyebrow">FIRST-PERSON PARKOUR</p>
+          <h1>ROOFTOP FLOW</h1>
+          <p class="lede">Run the white roofs. Follow the red.</p>
+          <div class="row">
+            <button id="start" class="primary" type="button">Start</button>
+            <button id="controls-toggle" class="ghost" type="button">Controls</button>
+          </div>
+          <label class="setting">
+            <span>Mouse sensitivity <span id="sensitivity-value">1.00</span></span>
+            <input id="sensitivity" type="range" min="0.4" max="1.8" step="0.05" value="1" />
+          </label>
+          <label class="check">
+            <input id="motion" type="checkbox" />
+            Reduce camera motion
+          </label>
+          <div id="controls" hidden>
+            <dl>
+              <dt>WASD</dt><dd>Move. Arrows work too.</dd>
+              <dt>Mouse</dt><dd>Look.</dd>
+              <dt>Shift</dt><dd>Sprint.</dd>
+              <dt>Space</dt><dd>Jump. Hold for height.</dd>
+              <dt>Ctrl / C</dt><dd>Slide. Jump out with Space.</dd>
+              <dt>E</dt><dd>Vault a low obstacle.</dd>
+              <dt>R</dt><dd>Restart from the last checkpoint.</dd>
+              <dt>Esc</dt><dd>Pause.</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <div id="fatal" hidden></div>
+    </div>
+  </body>
+</html>
