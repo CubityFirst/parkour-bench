@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ROOFTOP FLOW - a first-person browser parkour time trial across a bright rooftop city." />
+    <title>ROOFTOP FLOW</title>
+    <link rel="icon" href="data:," />
+    <script type="module" crossorigin src="./assets/index-Du6GuHaO.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Dr7DKHPZ.css">
+  </head>
+  <body>
+    <!-- The WebGL canvas is inserted into #app by the game. -->
+    <div id="app"></div>
+
+    <div id="hud" class="hidden" aria-live="polite">
+      <div id="crosshair"></div>
+      <div id="timer">00:00.00</div>
+      <div id="best-label"></div>
+      <div id="toast" class="toast"></div>
+      <div id="hint" class="hint"></div>
+      <div id="readout"><span id="speed">0.0</span> m/s &middot; <span id="mode">READY</span></div>
+    </div>
+
+    <div id="fade"></div>
+
+    <section id="menu" class="screen">
+      <div class="panel">
+        <p class="kicker">Parkour time trial</p>
+        <h1>ROOFTOP FLOW</h1>
+        <p class="tagline">Sprint the skyline. Never stop moving.</p>
+        <div class="stack">
+          <button id="btn-start" class="btn primary">Start Game</button>
+          <button id="btn-menu-controls" class="btn" data-open="controls" data-from="menu">Controls</button>
+          <button id="btn-menu-settings" class="btn" data-open="settings" data-from="menu">Settings</button>
+        </div>
+        <p id="menu-best" class="meta"></p>
+      </div>
+    </section>
+
+    <section id="pause" class="screen hidden">
+      <div class="panel">
+        <p class="kicker">Paused</p>
+        <h2>PAUSED</h2>
+        <div class="stack">
+          <button id="btn-resume" class="btn primary">Resume</button>
+          <button id="btn-checkpoint" class="btn">Restart from checkpoint <kbd>R</kbd></button>
+          <button id="btn-pause-controls" class="btn" data-open="controls" data-from="pause">Controls</button>
+          <button id="btn-pause-settings" class="btn" data-open="settings" data-from="pause">Settings</button>
+          <button id="btn-quit" class="btn ghost">Quit to menu</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="finish" class="screen hidden">
+      <div class="panel">
+        <p class="kicker">Rooftop run complete</p>
+        <h2>LEVEL COMPLETE</h2>
+        <div class="stats">
+          <div><span>Time</span><strong id="finish-time">--:--.--</strong></div>
+          <div><span>Best</span><strong id="finish-best">--:--.--</strong></div>
+        </div>
+        <p id="finish-note" class="meta"></p>
+        <div class="stack">
+          <button id="btn-restart" class="btn primary">Restart</button>
+          <button id="btn-finish-menu" class="btn ghost">Main menu</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="controls" class="screen hidden">
+      <div class="panel wide">
+        <h2>CONTROLS</h2>
+        <table class="controls-table">
+          <tbody>
+            <tr><th>WASD</th><td>Move</td></tr>
+            <tr><th>Mouse</th><td>Look around</td></tr>
+            <tr><th>Shift</th><td>Sprint</td></tr>
+            <tr><th>Space</th><td>Jump &middot; wall jump while wall running &middot; jump out of a slide</td></tr>
+            <tr><th>Ctrl / C</th><td>Slide (sprint first, keep momentum)</td></tr>
+            <tr><th>E</th><td>Vault low obstacles (ledges are mantled automatically when you fall into them)</td></tr>
+            <tr><th>R</th><td>Restart from the latest checkpoint</td></tr>
+            <tr><th>M</th><td>Mute sound</td></tr>
+            <tr><th>Esc</th><td>Pause and unlock the mouse</td></tr>
+          </tbody>
+        </table>
+        <div class="stack">
+          <button class="btn primary" data-back>Back</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="settings" class="screen hidden">
+      <div class="panel">
+        <h2>SETTINGS</h2>
+        <label class="row" for="sens">
+          <span>Mouse sensitivity <output id="sens-value"></output></span>
+          <input id="sens" type="range" min="0.2" max="3" step="0.05" />
+        </label>
+        <div class="row">
+          <span>Camera motion</span>
+          <button id="motion" class="btn small"></button>
+        </div>
+        <div class="row">
+          <span>Sound</span>
+          <button id="sound" class="btn small"></button>
+        </div>
+        <div class="stack">
+          <button class="btn primary" data-back>Back</button>
+        </div>
+      </div>
+    </section>
+
+  </body>
+</html>

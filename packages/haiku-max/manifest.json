@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "slug": "haiku-max",
+  "title": "Rooftop Flow",
+  "blurb": "Six sections, seven checkpoints and two wall-runs; a test bot finishes in about 28 s.",
+  "model": {
+    "family": "Haiku 5.5",
+    "id": "claude-haiku-5-5",
+    "provider": "claudeAgent",
+    "effort": "max"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T21:38:48.622Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow:best-time",
+    "rooftop-flow:settings"
+  ],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof; sprint reaches the first red vault block. Visible arms, textured towers, clouds."
+  },
+  "fixRounds": [],
+  "notes": ""
+}
