@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#d94b43" />
+    <title>Skyline Flow — Rooftop Parkour</title>
+  </head>
+  <body>
+    <main id="app">
+      <canvas id="gameCanvas" aria-label="Skyline Flow first-person parkour game"></canvas>
+
+      <section id="hud" class="hud is-hidden" aria-live="polite">
+        <div class="hud-top">
+          <div class="brand-mark"><span class="brand-slash"></span>SKYLINE FLOW</div>
+          <div class="timer-wrap"><span class="timer-label">RUN TIME</span><time id="timer">00:00.000</time></div>
+        </div>
+        <div class="progress-wrap" aria-hidden="true"><div id="progressFill"></div></div>
+        <div id="checkpointToast" class="checkpoint-toast"></div>
+        <div id="crosshair" aria-hidden="true"><i></i><b></b></div>
+        <div class="hint-wrap"><span class="hint-kicker">RUNNER VISION</span><span id="contextHint">Click START to enter the course</span></div>
+      </section>
+
+      <section id="menu" class="overlay menu-overlay">
+        <div class="corner-meta top-left">SECTOR // 07<br />FREE RUN PROTOCOL</div>
+        <div class="corner-meta top-right">BUILD 01.0<br />WEBGL ENABLED</div>
+        <div class="menu-card">
+          <div class="eyebrow"><span></span> URBAN MOTION SIMULATION</div>
+          <h1>SKYLINE<br /><em>FLOW</em></h1>
+          <p class="intro">Find the red line. Clear the city. Keep your momentum.</p>
+          <button id="startButton" class="primary-button"><span>START RUN</span><kbd>CLICK</kbd></button>
+          <button id="controlsButton" class="text-button">VIEW CONTROLS <span>+</span></button>
+          <div id="controlsPanel" class="controls-panel is-collapsed">
+            <div><kbd>WASD</kbd><span>Move</span><kbd>MOUSE</kbd><span>Look</span></div>
+            <div><kbd>SHIFT</kbd><span>Sprint</span><kbd>SPACE</kbd><span>Jump / wall jump</span></div>
+            <div><kbd>CTRL / C</kbd><span>Slide</span><kbd>E</kbd><span>Vault</span></div>
+            <div><kbd>R</kbd><span>Checkpoint restart</span><kbd>ESC</kbd><span>Pause</span></div>
+          </div>
+          <div class="settings">
+            <label for="sensitivity">MOUSE SENSITIVITY <output id="sensitivityValue">0.70</output></label>
+            <input id="sensitivity" type="range" min="0.25" max="1.25" value="0.70" step="0.05" />
+            <label class="toggle-row"><input id="reduceMotion" type="checkbox" /> <span class="toggle-box"></span> REDUCE CAMERA MOTION</label>
+          </div>
+        </div>
+        <div class="corner-meta bottom-left">ORIGINAL ROOFTOP COURSE<br />NO COMBAT // PURE MOMENTUM</div>
+        <div class="corner-meta bottom-right red">RUN THE EDGE <span>↗</span></div>
+      </section>
+
+      <section id="pauseMenu" class="overlay pause-overlay is-hidden">
+        <div class="pause-card">
+          <div class="eyebrow"><span></span> RUN PAUSED</div>
+          <h2>TAKE A<br /><em>BREATH.</em></h2>
+          <p>The city will wait. Your timer is stopped.</p>
+          <button id="resumeButton" class="primary-button"><span>RESUME RUN</span><kbd>CLICK</kbd></button>
+          <button id="pauseRestartButton" class="text-button">RESTART FROM CHECKPOINT <span>↻</span></button>
+          <p class="escape-note">ESC unlocks the mouse</p>
+        </div>
+      </section>
+
+      <section id="finishScreen" class="overlay finish-overlay is-hidden">
+        <div class="finish-card">
+          <div class="finish-line"></div>
+          <div class="eyebrow"><span></span> COURSE CLEARED</div>
+          <h2>LEVEL<br /><em>COMPLETE</em></h2>
+          <div class="score-grid"><div><small>YOUR TIME</small><strong id="finishTime">00:00.000</strong></div><div><small>BEST TIME</small><strong id="bestTime">--:--.---</strong></div></div>
+          <button id="restartButton" class="primary-button"><span>RUN IT AGAIN</span><kbd>R</kbd></button>
+          <p class="finish-note">The red line is yours now.</p>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
