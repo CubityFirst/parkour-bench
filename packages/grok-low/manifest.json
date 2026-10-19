@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "grok-low",
+  "title": "Rooftop Flow",
+  "blurb": "One rooftop route to a red finish line; its self-test bot clears it in 44.7 s.",
+  "model": {
+    "family": "Grok 4.7",
+    "id": "grok-4.7",
+    "provider": "grok",
+    "effort": "low"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T23:04:21.203Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow-best",
+    "rooftop-flow-settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof (visible arms); sprint reaches the first red vault block with an E-vault prompt. Orange billboards on glass towers like the zipline reference, red crane."
+  },
+  "fixRounds": [],
+  "notes": ""
+}
