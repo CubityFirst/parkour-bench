@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROOFTOP FLOW</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game-canvas"></canvas>
+
+      <!-- Main menu -->
+      <div id="menu" class="overlay">
+        <div class="panel">
+          <h1 class="title">ROOFTOP FLOW</h1>
+          <p class="subtitle">A parkour time trial across the white rooftops</p>
+          <div id="menu-main" class="menu-section">
+            <button id="btn-start" class="btn btn-primary">Start Game</button>
+            <button id="btn-controls" class="btn">Controls</button>
+            <button id="btn-settings" class="btn">Settings</button>
+          </div>
+          <div id="menu-controls" class="menu-section hidden">
+            <table class="controls-table">
+              <tr><td>WASD</td><td>Move</td></tr>
+              <tr><td>Mouse</td><td>Look around</td></tr>
+              <tr><td>Shift</td><td>Sprint</td></tr>
+              <tr><td>Space</td><td>Jump (hold for higher)</td></tr>
+              <tr><td>Ctrl / C</td><td>Slide</td></tr>
+              <tr><td>E</td><td>Vault / interact</td></tr>
+              <tr><td>R</td><td>Restart from checkpoint</td></tr>
+              <tr><td>Esc</td><td>Pause / unlock mouse</td></tr>
+            </table>
+            <button id="btn-controls-back" class="btn">Back</button>
+          </div>
+          <div id="menu-settings" class="menu-section hidden">
+            <label class="setting">
+              <span>Mouse sensitivity <em id="sens-value"></em></span>
+              <input id="sens-slider" type="range" min="0.2" max="3" step="0.05" />
+            </label>
+            <label class="setting checkbox">
+              <input id="reduce-motion" type="checkbox" />
+              <span>Reduce camera motion</span>
+            </label>
+            <button id="btn-settings-back" class="btn">Back</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- In-game HUD -->
+      <div id="hud" class="overlay hidden">
+        <div id="crosshair"></div>
+        <div id="timer" class="timer">0.00</div>
+        <div id="section-label" class="section-label"></div>
+        <div id="checkpoint-msg" class="toast hidden">CHECKPOINT</div>
+        <div id="hint" class="hint hidden"></div>
+      </div>
+
+      <!-- Pause menu -->
+      <div id="pause" class="overlay hidden">
+        <div class="panel">
+          <h2 class="title small">PAUSED</h2>
+          <button id="btn-resume" class="btn btn-primary">Resume</button>
+          <button id="btn-pause-restart" class="btn">Restart Run</button>
+          <button id="btn-pause-menu" class="btn">Main Menu</button>
+        </div>
+      </div>
+
+      <!-- Finish screen -->
+      <div id="finish" class="overlay hidden">
+        <div class="panel">
+          <h2 class="title small accent">LEVEL COMPLETE</h2>
+          <p class="stat">Time <span id="finish-time">0.00</span></p>
+          <p class="stat">Best <span id="finish-best">--</span></p>
+          <button id="btn-finish-restart" class="btn btn-primary">Restart</button>
+          <button id="btn-finish-menu" class="btn">Main Menu</button>
+        </div>
+      </div>
+
+      <!-- Click-to-play prompt shown while pointer lock is not active -->
+      <div id="click-prompt" class="overlay hidden">
+        <div class="panel small-panel">Click to resume control</div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

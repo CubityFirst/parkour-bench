@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "slug": "haiku-high",
+  "title": "Rooftop Flow",
+  "blurb": "About 255 m in six sections; a test bot clears it in 31.5 s with no falls.",
+  "model": {
+    "family": "Haiku 5.5",
+    "id": "claude-haiku-5-5",
+    "provider": "claudeAgent",
+    "effort": "high"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T21:07:53.179Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftopflow.bestTime",
+    "rooftopflow.settings"
+  ],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof; sprint reaches the first red vault block. Black sky dome fixed in round 1 (dome was outside the camera far plane)."
+  },
+  "fixRounds": [
+    {
+      "issue": "Large solid-black dome/blob rendered in the sky over the course and behind the menu.",
+      "at": "2026-10-19T21:03:58.186Z"
+    }
+  ],
+  "notes": ""
+}
