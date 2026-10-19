@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#b9e5fb"><meta name="description" content="A first-person rooftop parkour run."><title>Rooftop Flow</title>  <script type="module" crossorigin src="./assets/index-DNI39Lsa.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Zm-Nu2w2.css">
+</head>
+<body>
+<main id="app">
+<canvas id="game-canvas" aria-label="Rooftop Flow game"></canvas>
+<section id="menu-screen" class="screen menu-screen">
+  <div class="menu-copy">
+    <div class="eyebrow"><i></i> CITY RUN / 01</div>
+    <h1>ROOFTOP<br><span>FLOW</span></h1>
+    <p class="menu-lede">Find your line. Keep your speed.<br>The city is yours to cross.</p>
+    <button id="start-button" class="button primary">START RUN <b>↗</b></button>
+    <button id="controls-button" class="button quiet">HOW TO MOVE <b>+</b></button>
+    <div class="menu-footer"><span>ONE CONTINUOUS ROUTE</span><span>BEST <strong id="menu-best-time">--:--.--</strong></span></div>
+  </div>
+  <aside id="controls-panel" class="controls-card hidden">
+    <button id="close-controls" class="close-button" aria-label="Close controls">×</button>
+    <div class="eyebrow">MOVEMENT GUIDE</div><h2>Keep the line.</h2>
+    <div class="control-row"><kbd>W A S D</kbd><span>Move through the city</span></div>
+    <div class="control-row"><kbd>SHIFT</kbd><span>Sprint and build momentum</span></div>
+    <div class="control-row"><kbd>SPACE</kbd><span>Jump · tap again to mantle</span></div>
+    <div class="control-row"><kbd>CTRL</kbd><span>Slide under low structures</span></div>
+    <div class="control-row"><kbd>E</kbd><span>Vault a marked obstacle</span></div>
+    <div class="control-row"><kbd>R</kbd><span>Return to your checkpoint</span></div>
+    <p class="controls-note">Look with your mouse. Follow the red markers. Escape pauses your run.</p>
+  </aside>
+  <div class="settings">
+    <label for="sensitivity"><span>MOUSE SENSITIVITY</span><input id="sensitivity" type="range" min="0.5" max="2.2" step="0.05" value="1"></label>
+    <label for="reduced-motion"><span>REDUCE CAMERA MOTION</span><input id="reduced-motion" type="checkbox"><i class="toggle"></i></label>
+  </div>
+  <div class="side-note">A SMALL ROOFTOP RUN<br>BUILT FOR FLOW</div>
+</section>
+<section id="pause-screen" class="screen center-screen hidden"><div class="dialog">
+  <div class="eyebrow">RUN PAUSED</div><h2>Take a breath.</h2><p>Your route is waiting.</p>
+  <button id="resume-button" class="button primary">RESUME RUN <b>↗</b></button>
+  <button id="restart-button" class="button quiet">RESTART FROM CHECKPOINT</button>
+</div></section>
+<section id="complete-screen" class="screen center-screen hidden"><div class="dialog complete">
+  <div class="eyebrow"><i></i> RUN COMPLETE</div><h2>LEVEL<br><span>COMPLETE</span></h2>
+  <div class="readout"><span>YOUR TIME</span><strong id="finish-time">00:00.00</strong></div>
+  <div class="readout best"><span>LOCAL BEST</span><strong id="finish-best">00:00.00</strong></div>
+  <button id="play-again-button" class="button primary">RUN IT AGAIN <b>↗</b></button>
+  <button id="menu-button" class="button quiet">BACK TO MENU</button>
+</div></section>
+<div id="hud" class="hud hidden" aria-live="polite">
+  <div class="hud-top"><div class="hud-brand"><i></i> ROOFTOP FLOW</div>
+    <div class="hud-stage"><span>ROUTE 01</span><strong id="section-name">THE START</strong></div>
+    <div class="hud-time"><span>RUN TIME</span><strong id="run-time">00:00.00</strong></div>
+  </div>
+  <div class="crosshair"><i></i><b></b></div>
+  <div class="hud-bottom">
+    <div class="progress"><span>DISTANCE</span><i><b id="progress-fill"></b></i><strong id="progress-value">0%</strong></div>
+    <div id="context-hint" class="hint"><kbd>SHIFT</kbd> SPRINT <em>·</em> <kbd>SPACE</kbd> JUMP</div>
+    <div class="status"><i></i><span id="checkpoint-name">CHECKPOINT 01 / START</span></div>
+  </div>
+  <div id="checkpoint-toast" class="toast"></div><div id="action-toast" class="toast action"></div>
+  <div class="pointer-note">CLICK TO CAPTURE MOUSE · ESC TO PAUSE</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.png binary
+*.webp binary
+# Keep the brief and packaged builds byte-for-byte: manifests record the brief's SHA-256.
+brief/** -text
+packages/** -text

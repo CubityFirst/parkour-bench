@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parkour.cubityfir.st/schema/manifest-v1.json",
+  "title": "parkour-bench package manifest",
+  "type": "object",
+  "required": ["schemaVersion", "slug", "title", "blurb", "model", "status", "brief", "createdAt", "entry", "thumbnail", "storageKeys", "build", "verification", "fixRounds"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "title": { "type": "string", "minLength": 1, "maxLength": 40 },
+    "blurb": { "type": "string", "minLength": 10, "maxLength": 90 },
+    "model": {
+      "type": "object",
+      "required": ["family", "id", "provider", "effort"],
+      "properties": {
+        "family": { "type": "string", "minLength": 1 },
+        "id": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string", "minLength": 1 },
+        "effort": { "enum": ["low", "medium", "high", "xhigh", "max"] }
+      }
+    },
+    "status": { "enum": ["complete", "partial", "failed"] },
+    "brief": {
+      "type": "object",
+      "required": ["file", "sha256"],
+      "properties": { "file": { "type": "string" }, "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" } }
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "entry": { "const": "dist/index.html" },
+    "thumbnail": { "const": "thumbnail.webp" },
+    "storageKeys": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "build": {
+      "type": "object",
+      "required": ["command", "ok", "typecheck"],
+      "properties": {
+        "command": { "type": "string" },
+        "ok": { "type": "boolean" },
+        "typecheck": { "enum": ["pass", "fail", "skipped"] }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": ["pageErrors", "replacementChars", "grounded", "moves", "notes"],
+      "properties": {
+        "pageErrors": { "type": "array", "items": { "type": "string" } },
+        "replacementChars": { "type": "integer", "minimum": 0 },
+        "grounded": { "type": ["boolean", "null"] },
+        "moves": { "type": ["boolean", "null"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "fixRounds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["issue", "at"],
+        "properties": { "issue": { "type": "string" }, "at": { "type": "string", "format": "date-time" } }
+      }
+    },
+    "notes": { "type": "string" }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "luna-max",
+  "title": "Rooftop Flow",
+  "blurb": "Momentum movement over a procedural city, with fall recovery and a progress bar.",
+  "model": {
+    "family": "GPT-6-Luna",
+    "id": "gpt-6-luna",
+    "provider": "codex",
+    "effort": "max"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T20:29:18.368Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow-best-time",
+    "rooftop-flow-reduced-motion",
+    "rooftop-flow-sensitivity"
+  ],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof; sprint reaches the first gate with a vault prompt."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

@@ -1,0 +1,501 @@
+# Build a Mirror's Edge–Inspired Browser Parkour Game
+
+## Project Overview
+
+Create a fully playable **3D first-person parkour game** inspired by the movement mechanics, level design, and visual aesthetic of Mirror's Edge.
+
+The game must run directly in a modern desktop browser using **Three.js and WebGL**.
+
+The experience should feel fast, fluid, responsive, and satisfying. Players will sprint, jump, slide, vault, and wall-run across a minimalist futuristic city made of white rooftops, red architectural elements, and glass skyscrapers.
+
+**Important:** This should be an actual playable game with a complete level, objectives, checkpoints, and a finish line — not just a 3D environment or movement demonstration.
+
+Use an original environment and original level design inspired by the genre, rather than recreating copyrighted game assets or levels.
+
+---
+
+## 1. Technology Stack
+
+- Three.js for 3D rendering
+- TypeScript for game logic
+- Vite for development and bundling
+- WebGL renderer
+- Pointer Lock API for FPS camera controls
+- Custom lightweight player physics and collision detection
+- CSS/HTML for menus, HUD, and screen overlays
+
+Avoid unnecessary frameworks, complicated dependencies, and external game engines.
+
+Prioritize smooth performance, clear code architecture, and immediate playability.
+
+## 2. Visual Direction
+
+The visual aesthetic is extremely important.
+
+Create a bright, minimalist futuristic city inspired by Mirror's Edge.
+
+### Art Style
+- Predominantly white architecture
+- Bright blue sky
+- Clean geometric buildings
+- Occasional vibrant red objects to guide navigation
+- Subtle gray surfaces and concrete textures
+- Reflective blue-tinted glass skyscrapers
+- Strong natural sunlight
+- Soft ambient shadows
+- Slight atmospheric haze for distant buildings
+- High contrast between white rooftops and red parkour elements
+- Minimal visual clutter
+
+### Environment
+The game takes place on rooftops high above a large modern city.
+
+Include:
+- Rooftops at different heights
+- Narrow bridges between buildings
+- Large gaps that require running jumps
+- Red ventilation ducts
+- Air conditioning units and small obstacles
+- Climbable ledges
+- Wall-running surfaces
+- Rooftop railings
+- Glass-covered office buildings
+- Distant skyscrapers forming a city skyline
+- Occasional red doors, pipes, panels, and platforms
+
+Use simple geometric meshes and procedural materials where possible. Avoid relying on external models or textures.
+
+### Lighting and Rendering
+- Directional sunlight with realistic shadows
+- Ambient or hemisphere lighting
+- Soft shadows and ambient depth
+- Atmospheric distance fog
+- Tone mapping and correct color management
+- Optional subtle bloom, only if performance allows
+- Clean anti-aliased rendering
+
+The scene should look intentionally designed and visually appealing, not like a collection of random cubes.
+
+## 3. First-Person Player Controller
+
+The player movement system is the most important part of the entire game.
+
+Movement must feel responsive, smooth, fast, and momentum-based.
+
+### Basic Controls
+
+| Key | Action |
+|---|---|
+| WASD | Move |
+| Mouse | Look around |
+| Shift | Sprint |
+| Space | Jump |
+| Ctrl / C | Slide |
+| E | Vault / interact |
+| R | Restart from checkpoint |
+| Esc | Pause / unlock mouse |
+
+### Movement Physics
+
+Implement:
+- Smooth acceleration and deceleration
+- Momentum conservation
+- Sprinting with increased maximum speed
+- Air movement and limited air control
+- Gravity and falling
+- Collision detection against world geometry
+- Proper ground detection
+- Variable jump height based on jump button duration
+- Coyote time for forgiving jumps
+- Jump buffering
+- Controlled friction when landing
+
+Movement should feel fast and athletic instead of floaty.
+
+The player should be able to chain parkour moves together while maintaining momentum.
+
+## 4. Parkour Mechanics
+
+Implement the following mechanics, prioritizing reliability and good movement feel.
+
+### A. Running and Sprinting
+- Responsive WASD movement
+- Sprinting increases movement speed
+- Smooth acceleration to top speed
+- Preserve speed while navigating obstacles
+- Slightly increase camera field of view at high speeds
+
+### B. Jumping
+- Jump while standing or sprinting
+- Sprinting allows longer jumps because horizontal momentum is preserved
+- Allow minor air steering
+- Smooth landing behavior
+- Camera reacts subtly to takeoff and landing
+
+### C. Sliding
+- Press Ctrl while running to slide
+- Camera lowers toward the ground
+- Player collision height becomes smaller
+- Sliding preserves initial momentum
+- Speed gradually decreases due to friction
+- Player can slide underneath low obstacles
+- Allow jumping out of a slide
+- Return smoothly to standing height after sliding when there is enough headroom
+
+### D. Wall Running
+- Detect runnable vertical surfaces near the player
+- Allow wall running when airborne and moving fast enough
+- Support left-side and right-side wall runs
+- Reduce the effect of gravity during the wall run
+- Move the player along the wall
+- Tilt the camera slightly toward the wall
+- Allow jumping away from the wall
+- Limit wall-running duration
+- Prevent infinite wall-running exploits
+
+Wall running should be useful for crossing specific rooftop gaps.
+
+### E. Vaulting
+- Detect small obstacles directly in front of the player
+- Press E to vault them
+- Smoothly move the player over the obstacle
+- Preserve forward momentum
+- Prevent vaulting through large walls
+- Use brief procedural camera movement to communicate the action
+
+### F. Ledge Recovery
+- Detect reachable ledges when the player is just below the rooftop edge
+- Allow a short, smooth mantle onto the platform
+- Prevent clipping through obstacles
+
+Prioritize consistent movement behavior over physically perfect simulation.
+
+## 5. First-Person Camera Effects
+
+The camera should communicate speed and physical movement without making the player uncomfortable.
+
+Implement:
+- Smooth mouse look
+- Adjustable mouse sensitivity
+- Subtle walking and sprinting head bob
+- Speed-dependent field of view
+- Slight camera roll while strafing
+- Camera tilt during wall-running
+- Small landing impact animation
+- Smooth camera height transition during sliding
+- Subtle camera animation during vaulting
+
+Avoid excessive shaking or aggressive head bobbing.
+
+Include an option to reduce camera motion.
+
+## 6. Player Body Visualization
+
+Even though the game is first-person, include subtle visual feedback from the player's body.
+
+Examples:
+- Simple stylized hands visible during certain moves
+- Arms briefly appearing while vaulting
+- Legs or feet visible when looking down, if feasible
+- Procedural arm movement when sprinting
+
+Use simple low-poly geometry.
+
+Do not allow body meshes to obstruct the player's view.
+
+These effects are lower priority than gameplay and should only be added after the core movement system works correctly.
+
+## 7. Level Design
+
+Create one complete, intentionally designed rooftop parkour level.
+
+Target completion time: **60–120 seconds for a successful run**.
+
+The level must have a clear start and finish.
+
+### Level Structure
+
+**Section 1 — Movement Tutorial**
+
+A large starting rooftop where players learn:
+- Running
+- Sprinting
+- Jumping
+- Sliding
+
+Include a small obstacle and a short gap.
+
+**Section 2 — Rooftop Jumps**
+
+Several rooftops separated by gaps.
+
+Players must sprint and jump between buildings.
+
+Place red visual indicators near important jump locations.
+
+**Section 3 — Sliding Challenge**
+
+A rooftop filled with low ventilation structures.
+
+Players must slide underneath obstacles and maintain momentum.
+
+**Section 4 — Wall Run**
+
+Create a gap that cannot be crossed with a normal jump.
+
+Place a long wall beside the gap.
+
+The player must use wall running to reach the next platform.
+
+**Section 5 — Parkour Combination**
+
+Combine several actions:
+- Sprint
+- Jump
+- Vault
+- Wall run
+- Slide
+
+Make this section challenging but fair.
+
+**Section 6 — Final Sprint**
+
+A fast final rooftop sequence with several jumps and an obvious red finish marker.
+
+Crossing the finish line completes the level.
+
+### Level Design Rules
+- The intended route must always be readable
+- Highlight important interactive surfaces in red
+- Make jumps physically possible using the implemented movement values
+- Add enough landing space after difficult jumps
+- Avoid invisible walls
+- Avoid unfair obstacles
+- Reward players for maintaining momentum
+- Add checkpoints after major sections
+- Falling off the rooftops causes respawning at the latest checkpoint
+
+Place background buildings outside the playable level to give the illusion of a much larger city.
+
+## 8. Runner Vision
+
+Implement a simple navigation system inspired by Mirror's Edge's Runner Vision.
+
+Important traversal objects should feature red accents.
+
+Examples:
+- Red pipes
+- Red platforms
+- Red wall-run surfaces
+- Red vault obstacles
+- Red rooftop doors
+- Red finish markers
+
+Do not paint the entire route red. Use red intentionally to guide the player's attention.
+
+The route should also remain understandable through architecture and object placement.
+
+## 9. Game Interface
+
+Create a clean, minimal HUD.
+
+### Main Menu
+- Game title (use an original title such as "ROOFTOP FLOW")
+- Start Game button
+- Controls button
+- Mouse sensitivity setting
+- Camera motion setting
+
+### In-Game HUD
+- Small minimal crosshair
+- Current run timer
+- Checkpoint notification
+- Brief contextual control hints
+- Pause menu
+
+### Finish Screen
+When the player crosses the finish line:
+- Display "LEVEL COMPLETE"
+- Show completion time
+- Show best time saved locally
+- Display a Restart button
+
+Keep the HUD minimal, modern, and visually consistent with the game's aesthetic.
+
+Use clean typography with white, black, gray, and red accents.
+
+## 10. Sound Design
+
+If feasible, generate lightweight sound effects with the Web Audio API.
+
+Include:
+- Footsteps
+- Jump sound
+- Landing sound
+- Sliding sound
+- Wind while sprinting
+- Checkpoint activation
+- Level completion sound
+
+Do not require downloading large audio assets.
+
+Sound should enhance movement feedback without becoming distracting.
+
+## 11. Physics and Collision Reliability
+
+Collision and physics correctness are essential.
+
+Use a consistent fixed-timestep movement update independent of rendering frame rate.
+
+Implement reliable collision handling for:
+- Rooftop floors
+- Walls
+- Platforms
+- Obstacles
+- Low ceilings
+- Wall-running geometry
+- Vault targets
+- Ledges
+
+Make sure:
+- The player cannot fall through floors
+- The player cannot walk through solid walls
+- High-speed movement does not easily tunnel through obstacles
+- Respawning resets velocity and movement state
+- Sliding does not cause the player to get stuck
+- Jumping and landing behave consistently at different frame rates
+
+Keep the collision system simple but robust.
+
+## 12. Architecture
+
+Organize the code into maintainable modules.
+
+Suggested structure:
+
+src/
+- main.ts
+- game/Game.ts
+- game/GameState.ts
+- player/PlayerController.ts
+- player/PlayerPhysics.ts
+- player/ParkourSystem.ts
+- player/FirstPersonCamera.ts
+- world/Level.ts
+- world/CityGenerator.ts
+- world/CollisionWorld.ts
+- world/Checkpoints.ts
+- ui/HUD.ts
+- ui/Menu.ts
+- audio/AudioManager.ts
+- styles/main.css
+
+Separate input handling, physics, rendering, player state, and level creation.
+
+Use readable TypeScript, descriptive names, and clear comments for complex movement logic.
+
+## 13. Performance
+
+The game should run smoothly in desktop Chrome, Firefox, and Edge.
+
+Target 60 FPS on an average modern laptop.
+
+Optimize with:
+- Shared geometries and materials
+- Instanced meshes for repeated background objects
+- Sensible shadow map resolution
+- Limited draw calls
+- Reasonable pixel ratio
+- Simple shaders and materials
+- Efficient collision checks
+- Proper disposal of resources
+
+Do not introduce expensive visual effects unless they make a meaningful difference.
+
+## 14. Development Priorities
+
+Build in this order:
+
+**Phase 1 — Playable Foundation**
+- Initialize Three.js
+- Create the renderer, camera, lights, and sky
+- Implement pointer-lock mouse controls
+- Create basic rooftops
+- Implement movement, gravity, jumping, and collision
+
+**Phase 2 — Parkour**
+- Implement sprinting
+- Implement sliding
+- Implement wall running
+- Implement vaulting and ledge recovery
+- Add smooth camera feedback
+
+**Phase 3 — Complete Level**
+- Build the six level sections
+- Add route indicators
+- Add checkpoints
+- Add respawning
+- Add finish trigger
+
+**Phase 4 — Polish**
+- Improve materials and lighting
+- Generate background city
+- Add UI and timer
+- Add sound
+- Improve camera animation
+- Optimize performance
+
+The final project must include all phases, but earlier working functionality must not be broken when implementing later features.
+
+## 15. Important Requirements
+
+- The game must be playable immediately after running the development server.
+- Implement actual mechanics, not placeholder methods.
+- Do not substitute a static scene or video for gameplay.
+- Do not rely on paid assets or external APIs.
+- Do not require a backend.
+- Do not add multiplayer, enemies, combat, or unnecessary gameplay systems.
+- Prioritize movement feel and visual coherence.
+- Use procedural geometry and materials whenever possible.
+- Keep the overall scope manageable.
+- Ensure the level is completable from start to finish.
+- Avoid overengineering.
+
+## 16. Deliverables
+
+Generate a complete working Vite + Three.js + TypeScript project.
+
+Include:
+1. All source files.
+2. A complete package.json.
+3. All necessary configuration files.
+4. Instructions for installation and local development.
+5. A playable rooftop level.
+6. Functional movement and parkour mechanics.
+7. A start menu, HUD, checkpoint system, and finish screen.
+
+The project should launch with:
+
+```bash
+npm install
+npm run dev
+```
+
+Before considering the implementation complete, verify that the application builds successfully and check for obvious runtime errors.
+
+## Final Quality Target
+
+The result should feel like a small, polished indie parkour game.
+
+The most important qualities, in order, are:
+
+1. **Excellent movement feel** — fast, responsive, and momentum-based.
+2. **Reliable parkour mechanics** — jumping, sliding, wall running, and vaulting.
+3. **Strong visual identity** — bright white architecture, blue sky, striking red details.
+4. **Thoughtful level design** — a continuous route across rooftops.
+5. **Satisfying feedback** — subtle first-person camera effects and movement transitions.
+6. **Solid performance** — smooth and lightweight browser execution.
+
+Focus on making a simple experience feel genuinely good rather than creating a large but unfinished game.
+
+**Build the actual game, not just a prototype description.**

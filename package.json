@@ -1,0 +1,13 @@
+{
+  "name": "parkour-bench",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Benchmark harness: one parkour game brief, many models and effort levels, packaged for the parkour hub",
+  "scripts": {
+    "validate": "node tools/validate-package.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.60.0"
+  }
+}
