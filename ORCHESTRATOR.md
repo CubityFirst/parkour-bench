@@ -17,14 +17,14 @@ runs, each with:
 | `provider` | `codex`, `opencode`, `claudeAgent` | A `providerInstanceId` from `orchestrator_capabilities`. |
 | `model` | `gpt-6-luna`, `opencode-go/kimi-k3` | The exact model id from the same catalogue. |
 | `family` | `GPT-6-Luna` | Display name. Every build of one model must use the same family, so the hub groups them on one card. |
-| `effort` | `low` … `max` | One of `low`, `medium`, `high`, `xhigh`, `max`. |
+| `effort` | `low` … `ultra` | One of `low`, `medium`, `high`, `xhigh`, `max`, `ultra`. |
 | `slug` | `luna-max` | `<short-family>-<effort>`, lowercase, `[a-z0-9-]`. Must not already exist in `packages/`. |
 
 Call `orchestrator_capabilities` first and check that every model and effort exists.
 Providers name the effort option differently (`reasoningEffort`, `effort`, `variant`)
 and some don't offer every level: Qwen3.8 Flash has no `high`, and Kimi K3 offers only
-`max`. If a requested level is missing, say so and offer the nearest one. Don't
-substitute silently.
+`max`. `ultra` exists only on some Codex models (Sol, Astra), not on Luna. If a
+requested level is missing, say so and offer the nearest one. Don't substitute silently.
 
 ## 2. Pick endpoints and concurrency
 

@@ -18,7 +18,8 @@ export async function shoot({ url, outDir, start = 'start|play|run' }) {
   mkdirSync(outDir, { recursive: true });
   // System Chrome on the real GPU; headless SwiftShader is too slow for these scenes.
   const args = ['--enable-gpu', '--ignore-gpu-blocklist', ...(process.platform === 'win32' ? ['--use-angle=d3d11'] : [])];
-  const browser = await chromium.launch({ channel: 'chrome', headless: true, args });
+  // CHROME points at another Chromium build when Google Chrome isn't installed.
+  const browser = await chromium.launch({ ...(process.env.CHROME ? { executablePath: process.env.CHROME } : { channel: 'chrome' }), headless: true, args });
   const result = { url, pageErrors: [], consoleErrors: [], replacementChars: 0, renderer: null, startButton: false, frames: [] };
   try {
     for (const [name, times, keys] of [['idle', IDLE, []], ['sprint', SPRINT, ['KeyW', 'ShiftLeft']]]) {
