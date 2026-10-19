@@ -16,7 +16,7 @@
         "family": { "type": "string", "minLength": 1 },
         "id": { "type": "string", "minLength": 1 },
         "provider": { "type": "string", "minLength": 1 },
-        "effort": { "enum": ["low", "medium", "high", "xhigh", "max"] }
+        "effort": { "enum": ["low", "medium", "high", "xhigh", "max", "ultra"] }
       }
     },
     "status": { "enum": ["complete", "partial", "failed"] },

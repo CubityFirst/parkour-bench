@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "slug": "sol-max",
+  "title": "Rooftop Flow",
+  "blurb": "830 m rooftop route in six sectors: vaults, slides, wall runs and checkpoints.",
+  "model": {
+    "family": "GPT-6.1-Sol",
+    "id": "gpt-6.1-sol",
+    "provider": "codex",
+    "effort": "max"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T21:15:28.346Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow:b91f8ef0-193e-4a3d-a812-ec1752d4d6a8:best-time",
+    "rooftop-flow:b91f8ef0-193e-4a3d-a812-ec1752d4d6a8:mouse-sensitivity",
+    "rooftop-flow:b91f8ef0-193e-4a3d-a812-ec1752d4d6a8:reduced-motion"
+  ],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on start roof (idle 500/2000/5000 identical). Sprint covers ~20 m, then stops against the red vault barrier (E prompt shown). Brief stripe artifact at sprint-2000."
+  },
+  "fixRounds": [
+    {
+      "issue": "localStorage key rooftop-flow-best clashes with other packages on the shared origin",
+      "at": "2026-10-19T21:12:13.632Z"
+    }
+  ],
+  "notes": ""
+}

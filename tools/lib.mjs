@@ -8,7 +8,7 @@ export const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const runsDir = join(root, 'runs');
 export const packagesDir = join(root, 'packages');
 export const briefDir = join(root, 'brief');
-export const EFFORTS = ['low', 'medium', 'high', 'xhigh', 'max'];
+export const EFFORTS = ['low', 'medium', 'high', 'xhigh', 'max', 'ultra'];
 export const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 // `--key value` and `--flag` pairs; anything else is positional.

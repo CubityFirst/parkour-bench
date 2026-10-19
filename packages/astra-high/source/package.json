@@ -1,0 +1,26 @@
+{
+  "name": "upshift-rooftop-parkour",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "tsx --test tests/*.test.ts",
+    "test:browser": "node tests/browser-smoke.mjs && node tests/course-check.mjs"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.180.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9",
+    "tsx": "^4.20.6",
+    "@playwright/test": "^1.56.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

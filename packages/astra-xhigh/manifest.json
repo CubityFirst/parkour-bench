@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "slug": "astra-xhigh",
+  "title": "Rooftop Flow",
+  "blurb": "800-metre first-person rooftop course in six sectors with vaults, slides and wall-runs.",
+  "model": {
+    "family": "Astra",
+    "id": "gpt-6-astra",
+    "provider": "codex",
+    "effort": "xhigh"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T21:24:25.415Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "parkour-bench:astra-xhigh:rooftop-flow:best:v1",
+    "parkour-bench:astra-xhigh:rooftop-flow:settings:v1"
+  ],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on start roof (idle stable 0.5-5s). Sprint 49 km/h, assisted vault over first red barrier, crosses toward sector 02 roof by 5s. Round 1 fixed freeze after barrier reset; round 2 made localStorage keys game-unique."
+  },
+  "fixRounds": [
+    {
+      "issue": "Holding W+Shift: after ~1s a red full-screen flash/reset, then player frozen at 0 km/h (READY) with keys still held; sprint-2000/5000 identical.",
+      "at": "2026-10-19T21:10:43.156Z"
+    },
+    {
+      "issue": "localStorage key rooftop-flow-best clashes with another game on the shared hub origin (astra-low); asked for game-unique keys.",
+      "at": "2026-10-19T21:22:24.917Z"
+    }
+  ],
+  "notes": ""
+}

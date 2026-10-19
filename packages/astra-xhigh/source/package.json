@@ -1,0 +1,24 @@
+{
+  "name": "rooftop-flow",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "tsx tests/physics.test.ts",
+    "test:browser": "node tests/browser.mjs && node tests/course.mjs",
+    "test:sprint": "node tests/sprint.mjs"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.180.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9",
+    "tsx": "^4.20.6",
+    "@playwright/test": "^1.56.0"
+  }
+}

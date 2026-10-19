@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "slug": "astra-low",
+  "title": "Rooftop Flow",
+  "blurb": "First-person parkour across six rooftop sectors with wall-runs, vaults and checkpoints.",
+  "model": {
+    "family": "Astra",
+    "id": "gpt-6-astra",
+    "provider": "codex",
+    "effort": "low"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T20:55:28.237Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow-best"
+  ],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands still on start roof (idle 500/5000 identical). Sprint reaches 47 km/h, then stops at the first low red vault barrier ~25 m in (vault is on E), so sprint-5000 is pressed against it. HUD brand logo overlaps the 3D view slightly."
+  },
+  "fixRounds": [],
+  "notes": ""
+}
