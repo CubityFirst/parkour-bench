@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "slug": "terra-xhigh",
+  "title": "Rooftop Flow",
+  "blurb": "Six sections to a finish gate, with mantling, wall-runs and Web Audio.",
+  "model": {
+    "family": "GPT-5.6-Terra",
+    "id": "gpt-5.6-terra",
+    "provider": "codex",
+    "effort": "xhigh"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T22:25:19.133Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow-best"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof (visible arms); sprint follows a red runway past the first block to the roof edge facing the Checkpoint 01 gate within 5 s."
+  },
+  "fixRounds": [],
+  "notes": ""
+}
