@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "sonnet-medium",
+  "title": "Rooftop Flow",
+  "blurb": "Six sections with two wall-runs; a scripted bot clears the course in about 44 s.",
+  "model": {
+    "family": "Sonnet 5.5",
+    "id": "claude-sonnet-5-5",
+    "provider": "claudeAgent",
+    "effort": "medium"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-19T22:28:35.256Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftopflow.best",
+    "rooftopflow.settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof (timer starts on first move); sprint reaches 9 m/s and the first red vault obstacle. Red lattice tower and ramp like the reference, railings, glass towers."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

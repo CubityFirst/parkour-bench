@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROOFTOP FLOW</title>
+  </head>
+  <body>
+    <canvas id="game" tabindex="0"></canvas>
+
+    <!-- In-game HUD -->
+    <div id="hud" class="hidden">
+      <div id="crosshair"></div>
+      <div id="timer">00:00.00</div>
+      <div id="speed"><span id="speed-val">0</span><small>m/s</small></div>
+      <div id="notify"></div>
+      <div id="hint"></div>
+      <div id="vault-hint">E &nbsp;VAULT</div>
+    </div>
+    <div id="fade"></div>
+
+    <!-- Main menu -->
+    <div id="menu" class="overlay">
+      <div class="panel">
+        <div class="eyebrow">First-person rooftop parkour</div>
+        <h1>ROOFTOP<span class="red"> FLOW</span></h1>
+        <div class="rule"></div>
+        <div class="buttons" id="menu-main">
+          <button id="btn-start" class="primary">Start Game</button>
+          <button id="btn-controls">Controls</button>
+        </div>
+        <div class="settings">
+          <label>Mouse sensitivity
+            <input type="range" class="sens" min="0.2" max="3" step="0.05" value="1" />
+            <span class="sens-val">1.00</span>
+          </label>
+          <label class="check"><input type="checkbox" class="motion" /> Reduce camera motion</label>
+        </div>
+        <div id="best-line" class="best"></div>
+        <div id="controls-panel" class="controls hidden">
+          <table>
+            <tr><td>W A S D</td><td>Move</td></tr>
+            <tr><td>Mouse</td><td>Look</td></tr>
+            <tr><td>Shift</td><td>Sprint (hold)</td></tr>
+            <tr><td>Space</td><td>Jump (hold for height)</td></tr>
+            <tr><td>Ctrl / C</td><td>Slide (while sprinting)</td></tr>
+            <tr><td>E</td><td>Vault low obstacles</td></tr>
+            <tr><td>Space near wall</td><td>Wall-run: jump, hug the wall, hold W</td></tr>
+            <tr><td>R</td><td>Restart from checkpoint</td></tr>
+            <tr><td>Esc</td><td>Pause</td></tr>
+          </table>
+          <button id="btn-controls-back">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pause -->
+    <div id="pause" class="overlay hidden">
+      <div class="panel small">
+        <h2>PAUSED</h2>
+        <div class="buttons">
+          <button id="btn-resume" class="primary">Resume</button>
+          <button id="btn-restart-cp">Restart from checkpoint</button>
+          <button id="btn-restart-all">Restart level</button>
+        </div>
+        <div class="settings">
+          <label>Mouse sensitivity
+            <input type="range" class="sens" min="0.2" max="3" step="0.05" value="1" />
+            <span class="sens-val">1.00</span>
+          </label>
+          <label class="check"><input type="checkbox" class="motion" /> Reduce camera motion</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Finish -->
+    <div id="finish" class="overlay hidden">
+      <div class="panel small">
+        <div class="eyebrow">Run complete</div>
+        <h2>LEVEL COMPLETE</h2>
+        <div class="rule"></div>
+        <div class="stat"><span>Time</span><b id="fin-time">00:00.00</b></div>
+        <div class="stat"><span>Best</span><b id="fin-best">00:00.00</b></div>
+        <div id="fin-record" class="record hidden">New record!</div>
+        <div class="buttons">
+          <button id="btn-finish-restart" class="primary">Restart</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
