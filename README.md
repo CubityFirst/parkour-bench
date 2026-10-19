@@ -2,8 +2,8 @@
 
 A benchmark harness: give several AI models, at chosen effort levels, the same
 Mirror's Edge-style parkour game brief, then package each result in one standard format.
-The [parkour hub](../parkour-hub) ingests the packages and serves them side by side at
-https://parkour.cubityfir.st.
+The parkour hub (a sibling `parkour-hub` folder) ingests the packages and serves them side
+by side at https://parkour.cubityfir.st.
 
 An orchestrator agent does the work, following [ORCHESTRATOR.md](ORCHESTRATOR.md): it
 starts one subagent per (model, effort) pair, checks each build in headless Chrome,
