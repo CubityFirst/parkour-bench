@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROOFTOP FLOW</title>
+    <script type="module" crossorigin src="./assets/index-DS8DKsUR.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B6s_U5JT.css">
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+
+      <div id="hud" class="hidden">
+        <div id="crosshair"></div>
+        <div id="timer">00:00.00</div>
+        <div id="toast"></div>
+        <div id="hint"></div>
+      </div>
+
+      <div id="overlay-menu" class="overlay">
+        <div class="panel">
+          <h1>ROOFTOP FLOW</h1>
+          <div id="menu-main">
+            <button id="btn-start" class="btn primary">START GAME</button>
+            <button id="btn-controls" class="btn">CONTROLS</button>
+            <label class="row">
+              <span>Mouse sensitivity <span id="sens-value">1.0</span></span>
+              <input id="sens" type="range" min="0.4" max="3" step="0.1" value="1" />
+            </label>
+            <label class="row check">
+              <input id="reduce-motion" type="checkbox" />
+              <span>Reduce camera motion</span>
+            </label>
+          </div>
+          <div id="menu-controls" class="hidden">
+            <table class="controls">
+              <tr><td>WASD</td><td>Move</td></tr>
+              <tr><td>Mouse</td><td>Look around</td></tr>
+              <tr><td>Shift</td><td>Sprint</td></tr>
+              <tr><td>Space</td><td>Jump (hold for higher)</td></tr>
+              <tr><td>Ctrl / C</td><td>Slide (while sprinting)</td></tr>
+              <tr><td>E</td><td>Vault</td></tr>
+              <tr><td>Walk into a ledge</td><td>Mantle up</td></tr>
+              <tr><td>Airborne + red wall</td><td>Wall run (Space to jump off)</td></tr>
+              <tr><td>R</td><td>Restart from checkpoint</td></tr>
+              <tr><td>Esc</td><td>Pause</td></tr>
+            </table>
+            <button id="btn-controls-back" class="btn">BACK</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="overlay-pause" class="overlay hidden">
+        <div class="panel">
+          <h2>PAUSED</h2>
+          <button id="btn-resume" class="btn primary">RESUME</button>
+          <button id="btn-restart-checkpoint" class="btn">RESTART FROM CHECKPOINT</button>
+          <button id="btn-restart-run" class="btn">RESTART RUN</button>
+        </div>
+      </div>
+
+      <div id="overlay-finish" class="overlay hidden">
+        <div class="panel">
+          <h2 class="accent">LEVEL COMPLETE</h2>
+          <p>Time <strong id="finish-time">--</strong></p>
+          <p>Best <strong id="finish-best">--</strong></p>
+          <button id="btn-finish-restart" class="btn primary">RESTART</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
