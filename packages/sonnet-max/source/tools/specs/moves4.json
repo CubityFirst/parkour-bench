@@ -1,0 +1,59 @@
+{
+ "viewport": [
+  1280,
+  720
+ ],
+ "hud": true,
+ "shots": [
+  {
+   "name": "m4-slide-a",
+   "place": [
+    0,
+    62,
+    -33.5,
+    0,
+    -0.05
+   ],
+   "eval": "window.__rooftop.timeScale(0.15)",
+   "keys": [
+    [
+     "down",
+     "KeyW"
+    ],
+    [
+     "down",
+     "ShiftLeft"
+    ],
+    [
+     "wait",
+     3400
+    ],
+    [
+     "down",
+     "KeyC"
+    ],
+    [
+     "wait",
+     1200
+    ]
+   ],
+   "wait": 10,
+   "state": true
+  },
+  {
+   "name": "m4-slide-b",
+   "wait": 900,
+   "state": true
+  },
+  {
+   "name": "m4-slide-c",
+   "wait": 1000,
+   "state": true
+  },
+  {
+   "name": "m4-slide-d",
+   "wait": 1200,
+   "state": true
+  }
+ ]
+}

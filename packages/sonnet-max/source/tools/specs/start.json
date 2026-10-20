@@ -1,0 +1,10 @@
+{
+  "viewport": [1280, 720],
+  "hud": false,
+  "freeze": true,
+  "shots": [
+    { "name": "s1-start", "place": [0, 62, 3, 0.18, 0.0] },
+    { "name": "s2-start-left", "place": [0, 62, 3, 0.7, 0.04] },
+    { "name": "s3-plaza2", "place": [4, 61.2, -176, 0.8, 0.0] }
+  ]
+}

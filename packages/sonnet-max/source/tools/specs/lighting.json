@@ -1,0 +1,11 @@
+{
+  "viewport": [1280, 720],
+  "hud": false,
+  "freeze": true,
+  "shots": [
+    { "name": "f1-a", "place": [0, 62, 3, 0, 0], "tune": { "sun": 3.2, "hemi": 0.3, "env": 0.45, "exposure": 1.05, "bloom": 0.12, "bloomThreshold": 1.25, "bloomRadius": 0.6 } },
+    { "name": "f2-down", "place": [0, 62, 3, 0, -1.0] },
+    { "name": "f3-down2", "place": [0, 62, 3, 0.4, -0.7] },
+    { "name": "f4-corridor", "place": [0, 62, -29, 0, 0.02] }
+  ]
+}

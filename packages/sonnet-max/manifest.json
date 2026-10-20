@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "sonnet-max",
+  "title": "Rooftop Flow",
+  "blurb": "Runner Vision, bloom and a flow bonus; its autopilot finishes the course in 62 s.",
+  "model": {
+    "family": "Sonnet 5.5",
+    "id": "claude-sonnet-5-5",
+    "provider": "claudeAgent",
+    "effort": "max"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-20T00:32:36.824Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow-best-time",
+    "rooftop-flow-settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof (gloved arms); sprint reaches and passes the first red block by 5 s. Red lattice mast with electrical box (ref-2), orange-banded offices (ref-1). Autopilot finishes in 62.08 s in real Chrome; 39 physics checks and a 32M-tick fuzz run pass."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

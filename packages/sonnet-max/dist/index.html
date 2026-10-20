@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ROOFTOP FLOW - a first-person rooftop parkour game built with Three.js." />
+    <meta name="theme-color" content="#f5f7f9" />
+    <title>ROOFTOP FLOW</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f5f7f9'/%3E%3Cpath d='M14 50 L30 12 H40 L24 50Z' fill='%23e0150f'/%3E%3Cpath d='M36 50 L48 22 H54 L42 50Z' fill='%2310151c'/%3E%3C/svg%3E"
+    />
+    <script type="module" crossorigin src="./assets/index-CFxRLg2G.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/three-uWs3C4z-.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-DUFP3zOv.css">
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game-canvas" tabindex="-1"></canvas>
+
+      <div id="speedfx"></div>
+
+      <!-- In-game HUD -->
+      <div id="hud" class="hidden" aria-hidden="true">
+        <div id="crosshair"></div>
+        <div id="timer"><span class="timer-label">TIME</span><span id="timer-value">00:00.00</span></div>
+        <div id="section-label"></div>
+        <div id="toast"><span id="toast-title"></span><span id="toast-sub"></span></div>
+        <div id="hint"><span id="hint-keys"></span><span id="hint-text"></span></div>
+        <div id="speed"><div id="speed-fill"></div><span id="speed-text">0</span></div>
+        <div id="lock-hint">CLICK TO CAPTURE THE MOUSE</div>
+      </div>
+
+      <div id="fade"></div>
+
+      <!-- Main menu -->
+      <section id="menu" class="screen">
+        <div class="panel">
+          <div class="brand-bar"></div>
+          <p class="eyebrow">A FIRST-PERSON PARKOUR RUN</p>
+          <h1 class="title"><span>ROOFTOP</span><span class="accent">FLOW</span></h1>
+          <p class="tagline">Six sections. One line across the city. Never stop moving.</p>
+          <div class="actions">
+            <button id="btn-start" class="btn primary" type="button">Start Game</button>
+            <button id="btn-controls" class="btn" type="button">Controls</button>
+          </div>
+          <div class="settings" id="menu-settings"></div>
+          <div class="best-row">BEST TIME <b id="menu-best">--:--.--</b></div>
+        </div>
+        <div class="footnote">Click Start to capture the mouse &middot; ESC pauses</div>
+      </section>
+
+      <!-- Controls -->
+      <section id="controls" class="screen hidden">
+        <div class="panel wide">
+          <div class="brand-bar"></div>
+          <p class="eyebrow">CONTROLS</p>
+          <h2 class="big small">HOW TO MOVE</h2>
+          <div class="keys-grid">
+            <div class="krow"><span class="kk"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span><span>Move</span></div>
+            <div class="krow"><span class="kk"><kbd>Mouse</kbd></span><span>Look around</span></div>
+            <div class="krow"><span class="kk"><kbd>Shift</kbd></span><span>Sprint (hold) &mdash; top speed builds the longer you keep moving</span></div>
+            <div class="krow"><span class="kk"><kbd>Space</kbd></span><span>Jump (hold for height) &middot; jump off a wall &middot; pull up a ledge</span></div>
+            <div class="krow"><span class="kk"><kbd>C</kbd><kbd>Ctrl</kbd></span><span>Slide while sprinting &middot; slide under low ducts &middot; roll out of a landing</span></div>
+            <div class="krow"><span class="kk"><kbd>E</kbd></span><span>Vault low obstacles &middot; climb a ledge</span></div>
+            <div class="krow"><span class="kk"><kbd>R</kbd></span><span>Restart from the last checkpoint</span></div>
+            <div class="krow"><span class="kk"><kbd>Esc</kbd></span><span>Pause and release the mouse</span></div>
+          </div>
+          <ul class="tips">
+            <li><b class="red">Red</b> marks the way: jump-off edges, vault boxes, slide slots and wall-run surfaces.</li>
+            <li>Jump toward a red wall and hold <kbd>W</kbd> to wall-run along it. Press <kbd>Space</kbd> to jump off.</li>
+            <li>Missed a ledge by a little? Hold <kbd>W</kbd> &mdash; you will grab the edge and pull up.</li>
+            <li><kbd>Ctrl</kbd>+<kbd>W</kbd> closes the browser tab &mdash; use <kbd>C</kbd> to slide.</li>
+          </ul>
+          <div class="actions row"><button id="btn-controls-back" class="btn primary" type="button">Back</button></div>
+        </div>
+      </section>
+
+      <!-- Pause -->
+      <section id="pause" class="screen hidden">
+        <div class="panel">
+          <div class="brand-bar"></div>
+          <p class="eyebrow">PAUSED</p>
+          <h2 class="big small">TAKE A BREATH</h2>
+          <div class="actions col">
+            <button id="btn-resume" class="btn primary" type="button">Resume</button>
+            <button id="btn-checkpoint" class="btn" type="button">Restart from checkpoint</button>
+            <button id="btn-pause-restart" class="btn" type="button">Restart level</button>
+            <button id="btn-pause-controls" class="btn" type="button">Controls</button>
+            <button id="btn-pause-menu" class="btn" type="button">Main menu</button>
+          </div>
+          <div class="settings" id="pause-settings"></div>
+        </div>
+      </section>
+
+      <!-- Finish -->
+      <section id="finish" class="screen hidden">
+        <div class="panel center">
+          <div class="brand-bar"></div>
+          <p class="eyebrow">ROOFTOP FLOW</p>
+          <h2 class="big">LEVEL COMPLETE</h2>
+          <div class="stats">
+            <div><span>TIME</span><b id="finish-time">00:00.00</b></div>
+            <div><span>BEST</span><b id="finish-best">00:00.00</b></div>
+            <div><span>FALLS</span><b id="finish-falls">0</b></div>
+          </div>
+          <p id="finish-new" class="badge hidden">NEW BEST TIME</p>
+          <div class="actions row">
+            <button id="btn-restart" class="btn primary" type="button">Restart</button>
+            <button id="btn-finish-menu" class="btn" type="button">Main menu</button>
+          </div>
+        </div>
+      </section>
+
+      <div id="loading"><div class="loading-bar"><i></i></div><span>LOADING CITY</span></div>
+      <noscript><div class="noscript">ROOFTOP FLOW needs JavaScript and WebGL.</div></noscript>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "viewport": [1280, 720],
+  "hud": true,
+  "shots": [
+    { "name": "m1-vault-a", "place": [0, 62, -13.0, 0, -0.1], "eval": "window.__rooftop.timeScale(0.15)",
+      "keys": [["down", "KeyW"], ["down", "ShiftLeft"], ["wait", 3300], ["press", "KeyE"], ["wait", 1700]], "wait": 10, "state": true },
+    { "name": "m1-vault-b", "wait": 500, "state": true },
+    { "name": "m1-vault-c", "wait": 500, "state": true },
+    { "name": "m1-vault-d", "wait": 500, "state": true },
+    { "name": "m1-vault-e", "wait": 700, "state": true }
+  ]
+}
