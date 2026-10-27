@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "slug": "terra61-xhigh",
+  "title": "Skyline Relay",
+  "blurb": "Six sections from The Departure to The Home Stretch, with a wall-run and a slide.",
+  "model": {
+    "family": "GPT-6.1-Terra",
+    "id": "gpt-6.1-terra",
+    "provider": "codex",
+    "effort": "xhigh"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-27T15:39:37.845Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "skyline-relay-best"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof (visible arms, red ladder like ref-2); sprint runs ~15 m and stops pressed against the first red vault block (needs a jump/vault), its top filling the lower view. No page errors."
+  },
+  "fixRounds": [],
+  "notes": ""
+}
