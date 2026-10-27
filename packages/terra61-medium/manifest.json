@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "slug": "terra61-medium",
+  "title": "Skyline / Run",
+  "blurb": "Six sections from The Start to Final Sprint, with a red wall-run and a red finish gate.",
+  "model": {
+    "family": "GPT-6.1-Terra",
+    "id": "gpt-6.1-terra",
+    "provider": "codex",
+    "effort": "medium"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-27T15:44:02.648Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "skyline-best"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof. Harness sprint frames show no movement: the game clears held keys on pointerlockchange, and the harness presses W+Shift before the lock lands (no key repeat in Playwright). Pressing keys 300 ms after start: walk 25 km/h, sprint 40 km/h. Not a gameplay bug."
+  },
+  "fixRounds": [],
+  "notes": ""
+}
