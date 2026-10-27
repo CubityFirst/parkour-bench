@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "glm-max",
+  "title": "Rooftop Flow",
+  "blurb": "Six rooftop sections with duct slides, two wall-runs and checkpoints to a red finish gate.",
+  "model": {
+    "family": "GLM-5.3-Flash",
+    "id": "opencode-go/glm-5.3-flash",
+    "provider": "opencode",
+    "effort": "max"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-27T18:27:08.870Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftopflow.best",
+    "rooftopflow.settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Clean menu and HUD; sprint reaches the first red vault box with an E-to-vault prompt. Model's own driver did not reach the finish headlessly."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROOFTOP FLOW — First-Person Parkour</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f4f2ee'/%3E%3Crect x='0' y='0' width='10' height='64' fill='%23d5262b'/%3E%3Crect x='18' y='38' width='40' height='8' fill='%23d5262b'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="./assets/index-Bugts4rn.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-OpgMOxj9.css">
+  </head>
+  <body>
+    <canvas id="game-canvas"></canvas>
+
+    <div id="vignette"></div>
+
+    <!-- ============ In-game HUD ============ -->
+    <div id="hud" class="hidden">
+      <div id="crosshair">
+        <svg width="28" height="28" viewBox="0 0 28 28">
+          <circle cx="14" cy="14" r="1.8" fill="rgba(255,255,255,0.85)" />
+          <g stroke="rgba(255,255,255,0.55)" stroke-width="1.4">
+            <line x1="14" y1="2"  x2="14" y2="7.5" />
+            <line x1="14" y1="20.5" x2="14" y2="26" />
+            <line x1="2" y1="14" x2="7.5" y2="14" />
+            <line x1="20.5" y1="14" x2="26" y2="14" />
+          </g>
+        </svg>
+      </div>
+      <div id="timer">00:00.00</div>
+      <div id="cp-hud" class="hidden">CHECKPOINT 0 / 5</div>
+      <div id="hint" class="hidden"></div>
+      <div id="toast" class="hidden"></div>
+    </div>
+
+    <!-- ============ Main menu ============ -->
+    <div id="menu">
+      <div class="menu-card">
+        <div class="menu-stripe"></div>
+        <div class="menu-title">ROOFTOP<br />FLOW</div>
+        <div class="menu-sub">A first-person rooftop run</div>
+
+        <button id="btn-start" class="btn btn-primary">START RUN</button>
+        <button id="btn-controls" class="btn">CONTROLS</button>
+
+        <div id="controls-panel" class="panel hidden">
+          <table class="controls-table">
+            <tr><td class="key">W A S D</td><td>Move</td></tr>
+            <tr><td class="key">MOUSE</td><td>Look</td></tr>
+            <tr><td class="key">SHIFT</td><td>Sprint (hold)</td></tr>
+            <tr><td class="key">SPACE</td><td>Jump</td></tr>
+            <tr><td class="key">CTRL / C</td><td>Slide (hold)</td></tr>
+            <tr><td class="key">E</td><td>Vault</td></tr>
+            <tr><td class="key">W</td><td>Wall-run (sprint into a wall in the air)</td></tr>
+            <tr><td class="key">R</td><td>Restart from checkpoint</td></tr>
+            <tr><td class="key">ESC</td><td>Pause</td></tr>
+          </table>
+          <p class="controls-note">Follow the red. Red objects mark vaults, slides and wall-runs.</p>
+        </div>
+
+        <div class="settings">
+          <div class="setting-row">
+            <span class="setting-label">MOUSE SENSITIVITY</span>
+            <input id="sens" type="range" min="0.25" max="2.5" step="0.05" value="1" />
+            <span id="sens-value" class="setting-value">1.00</span>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">REDUCE CAMERA MOTION</span>
+            <label class="switch">
+              <input id="motion" type="checkbox" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div id="best-time-menu" class="menu-best"></div>
+      </div>
+      <div class="menu-credit">Three.js + TypeScript · WebGL · runs entirely in your browser</div>
+    </div>
+
+    <!-- ============ Pause menu ============ -->
+    <div id="pause" class="hidden">
+      <div class="menu-card small">
+        <div class="menu-stripe"></div>
+        <div class="menu-title small">PAUSED</div>
+        <button id="btn-resume" class="btn btn-primary">RESUME</button>
+        <button id="btn-restart-run" class="btn">RESTART RUN</button>
+        <button id="btn-quit" class="btn">QUIT TO TITLE</button>
+        <div class="settings">
+          <div class="setting-row">
+            <span class="setting-label">MOUSE SENSITIVITY</span>
+            <input id="p-sens" type="range" min="0.25" max="2.5" step="0.05" value="1" />
+            <span id="p-sens-value" class="setting-value">1.00</span>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">REDUCE CAMERA MOTION</span>
+            <label class="switch">
+              <input id="p-motion" type="checkbox" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ Finish screen ============ -->
+    <div id="finish" class="hidden">
+      <div class="menu-card">
+        <div class="menu-stripe"></div>
+        <div class="menu-title small">LEVEL<br />COMPLETE</div>
+        <div class="finish-time-label">RUN TIME</div>
+        <div id="finish-time" class="finish-time">00:00.00</div>
+        <div id="finish-best" class="finish-best"></div>
+        <button id="btn-finish-restart" class="btn btn-primary">RUN AGAIN</button>
+        <button id="btn-finish-menu" class="btn">TITLE SCREEN</button>
+      </div>
+    </div>
+
+    <!-- ============ misc overlays ============ -->
+    <div id="focus-hint" class="hidden">CLICK TO PLAY</div>
+    <div id="fade"></div>
+
+  </body>
+</html>
