@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "opus-high",
+  "title": "Rooftop Flow",
+  "blurb": "Six rooftop sections with a 14 m wall-run gap, duct slides and a red finish gate.",
+  "model": {
+    "family": "Opus 5.5",
+    "id": "claude-opus-5-5",
+    "provider": "claudeAgent",
+    "effort": "high"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-27T23:13:29.924Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow.best",
+    "rooftop-flow.settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Polished menu and HUD with section labels; sprint passes the first low wall to the duct row. Model's bot completed the full route (~30 s, under the 60-120 s target)."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

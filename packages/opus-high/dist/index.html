@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ROOFTOP FLOW — a first-person rooftop parkour game." />
+    <title>ROOFTOP FLOW</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4f5f6'/%3E%3Cpath d='M6 26 L18 6 L24 6 L12 26Z' fill='%23e1251b'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="./assets/index-B5nMmJTc.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B8jxl-ug.css">
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game"></canvas>
+
+      <!-- In-game HUD -->
+      <div id="hud" class="hidden">
+        <div id="speedlines"></div>
+        <div id="crosshair"></div>
+        <div id="hud-top">
+          <div id="section-label"><span id="section-num">01</span><span id="section-title">MOVEMENT TUTORIAL</span></div>
+          <div id="timer">00:00.00</div>
+          <div id="progress"><div id="progress-fill"></div></div>
+        </div>
+        <div id="toast"></div>
+        <div id="hint"></div>
+        <div id="speed"><span id="speed-value">0</span><small>M/S</small></div>
+        <div id="key-hints">R &nbsp;RESTART CHECKPOINT &nbsp;·&nbsp; ESC &nbsp;PAUSE</div>
+      </div>
+      <div id="flash"></div>
+
+      <!-- Main menu -->
+      <div id="menu" class="screen">
+        <div class="panel menu-panel">
+          <div class="brand">
+            <div class="brand-mark"></div>
+            <h1>ROOFTOP<br /><span>FLOW</span></h1>
+            <p class="tagline">Run the rooftops. Keep the flow.</p>
+          </div>
+          <div class="menu-buttons">
+            <button id="btn-start" class="btn primary">START RUN</button>
+            <button id="btn-controls" class="btn">CONTROLS</button>
+          </div>
+          <div class="settings" data-settings>
+            <label>MOUSE SENSITIVITY <output data-out="sensitivity">1.00</output>
+              <input type="range" min="0.2" max="3" step="0.05" data-setting="sensitivity" />
+            </label>
+            <label>CAMERA MOTION
+              <select data-setting="motion">
+                <option value="full">Full</option>
+                <option value="reduced">Reduced</option>
+                <option value="minimal">Minimal</option>
+              </select>
+            </label>
+            <label>VOLUME <output data-out="volume">80%</output>
+              <input type="range" min="0" max="1" step="0.05" data-setting="volume" />
+            </label>
+          </div>
+          <div class="best">BEST TIME <strong id="menu-best">--:--.--</strong></div>
+        </div>
+        <div class="menu-footer">Click START to lock the mouse · Tip: use <b>C</b> to slide (Ctrl+W closes browser tabs)</div>
+      </div>
+
+      <!-- Controls -->
+      <div id="controls" class="screen hidden">
+        <div class="panel controls-panel">
+          <h2>CONTROLS</h2>
+          <table>
+            <tr><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></td><td>Move</td></tr>
+            <tr><td><kbd>Mouse</kbd></td><td>Look around</td></tr>
+            <tr><td><kbd>Shift</kbd></td><td>Sprint (hold)</td></tr>
+            <tr><td><kbd>Space</kbd></td><td>Jump — hold for height · wall jump while wall running</td></tr>
+            <tr><td><kbd>C</kbd> / <kbd>Ctrl</kbd></td><td>Slide while running · crouch when slow</td></tr>
+            <tr><td><kbd>E</kbd></td><td>Vault low obstacles · climb chest-high ledges</td></tr>
+            <tr><td><kbd>R</kbd></td><td>Restart from checkpoint</td></tr>
+            <tr><td><kbd>Esc</kbd></td><td>Pause / release mouse</td></tr>
+          </table>
+          <h3>PARKOUR</h3>
+          <ul>
+            <li><b>Wall run:</b> sprint alongside a wall, jump, and keep holding <kbd>W</kbd>. Red panels mark the best walls.</li>
+            <li><b>Ledge grab:</b> jump at a ledge while holding <kbd>W</kbd> to pull yourself up.</li>
+            <li><b>Momentum:</b> slides, vaults and wall runs keep your speed — chain them.</li>
+          </ul>
+          <button id="btn-controls-back" class="btn primary">BACK</button>
+        </div>
+      </div>
+
+      <!-- Pause -->
+      <div id="pause" class="screen hidden">
+        <div class="panel pause-panel">
+          <h2>PAUSED</h2>
+          <div class="menu-buttons">
+            <button id="btn-resume" class="btn primary">RESUME</button>
+            <button id="btn-restart-cp" class="btn">RESTART CHECKPOINT</button>
+            <button id="btn-restart" class="btn">RESTART LEVEL</button>
+            <button id="btn-pause-controls" class="btn">CONTROLS</button>
+            <button id="btn-quit" class="btn">MAIN MENU</button>
+          </div>
+          <div class="settings" data-settings>
+            <label>MOUSE SENSITIVITY <output data-out="sensitivity">1.00</output>
+              <input type="range" min="0.2" max="3" step="0.05" data-setting="sensitivity" />
+            </label>
+            <label>CAMERA MOTION
+              <select data-setting="motion">
+                <option value="full">Full</option>
+                <option value="reduced">Reduced</option>
+                <option value="minimal">Minimal</option>
+              </select>
+            </label>
+            <label>VOLUME <output data-out="volume">80%</output>
+              <input type="range" min="0" max="1" step="0.05" data-setting="volume" />
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finish -->
+      <div id="finish" class="screen hidden">
+        <div class="panel finish-panel">
+          <div class="finish-bar"></div>
+          <h2>LEVEL COMPLETE</h2>
+          <div class="finish-time" id="finish-time">00:00.00</div>
+          <div class="finish-record hidden" id="finish-record">NEW BEST TIME</div>
+          <div class="finish-stats">
+            <div>BEST <strong id="finish-best">--:--.--</strong></div>
+            <div>RESPAWNS <strong id="finish-respawns">0</strong></div>
+          </div>
+          <div class="menu-buttons">
+            <button id="btn-finish-restart" class="btn primary">RESTART</button>
+            <button id="btn-finish-menu" class="btn">MAIN MENU</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="loading" class="screen"><div class="loading-text">ROOFTOP FLOW<span>BUILDING CITY…</span></div></div>
+    </div>
+  </body>
+</html>
