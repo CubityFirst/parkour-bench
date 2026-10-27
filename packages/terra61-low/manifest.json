@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "slug": "terra61-low",
+  "title": "Rooftop Flow",
+  "blurb": "A six-section rooftop time trial with vaults, slides and wall jumps.",
+  "model": {
+    "family": "GPT-6.1-Terra",
+    "id": "gpt-6.1-terra",
+    "provider": "codex",
+    "effort": "low"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-27T15:38:12.251Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-best"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof. Sprinting without jumping runs off into the 13 m first gap and now falls and respawns at the start (~3.3 s), repeating while W is held. Fixed in round 1: previously hung against the next building's face with no respawn."
+  },
+  "fixRounds": [
+    {
+      "issue": "Falling into the first gap (sprint, no jump) left the player hanging against the next building's face for 6+ s with no respawn; soft-lock without R.",
+      "at": "2026-10-27T15:32:47.749Z"
+    }
+  ],
+  "notes": ""
+}
