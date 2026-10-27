@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "opus-low",
+  "title": "Rooftop Flow",
+  "blurb": "Six sections to a red finish gate, with two required wall-runs and duct slides.",
+  "model": {
+    "family": "Opus 5.5",
+    "id": "claude-opus-5-5",
+    "provider": "claudeAgent",
+    "effort": "low"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-27T15:48:59.068Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftopflow.best",
+    "rooftopflow.settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof under a red GO banner; sprint reaches the first red hurdle and stops with a 'Press E near the red hurdle to vault' hint. Bright white roofs and detailed blue glass towers, close to the references. No page errors."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

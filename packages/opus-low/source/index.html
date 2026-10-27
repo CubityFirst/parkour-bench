@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROOFTOP FLOW</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <div id="hud" class="hidden">
+    <div id="crosshair"></div>
+    <div id="timer">00:00.00</div>
+    <div id="toast"></div>
+    <div id="hint"></div>
+  </div>
+
+  <div id="menu" class="overlay">
+    <div class="panel">
+      <h1>ROOFTOP<span>FLOW</span></h1>
+      <p class="sub">Run the rooftops. Follow the red.</p>
+      <button id="btn-start" class="primary">START GAME</button>
+      <button id="btn-controls">CONTROLS</button>
+      <div id="controls" class="hidden">
+        <table>
+          <tr><td>WASD</td><td>Move</td></tr>
+          <tr><td>Mouse</td><td>Look</td></tr>
+          <tr><td>Shift</td><td>Sprint</td></tr>
+          <tr><td>Space</td><td>Jump (hold for higher)</td></tr>
+          <tr><td>Ctrl / C</td><td>Slide</td></tr>
+          <tr><td>E</td><td>Vault</td></tr>
+          <tr><td>R</td><td>Restart from checkpoint</td></tr>
+          <tr><td>Esc</td><td>Pause</td></tr>
+        </table>
+        <p class="small">Wall run: jump alongside a red wall while holding W. Climb ledges by jumping into them while holding W.</p>
+      </div>
+      <label>Sensitivity <input id="sens" type="range" min="0.2" max="3" step="0.05" value="1" /><span id="sens-val">1.00</span></label>
+      <label>Camera motion
+        <select id="motion"><option value="full">Full</option><option value="reduced">Reduced</option></select>
+      </label>
+      <p class="best" id="menu-best"></p>
+    </div>
+  </div>
+
+  <div id="pause" class="overlay hidden">
+    <div class="panel">
+      <h2>PAUSED</h2>
+      <button id="btn-resume" class="primary">RESUME</button>
+      <button id="btn-restart-p">RESTART LEVEL</button>
+      <button id="btn-menu">MAIN MENU</button>
+    </div>
+  </div>
+
+  <div id="finish" class="overlay hidden">
+    <div class="panel">
+      <h2 class="red">LEVEL COMPLETE</h2>
+      <p class="bigtime" id="finish-time"></p>
+      <p class="best" id="finish-best"></p>
+      <button id="btn-restart-f" class="primary">RESTART</button>
+      <button id="btn-menu-f">MAIN MENU</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
