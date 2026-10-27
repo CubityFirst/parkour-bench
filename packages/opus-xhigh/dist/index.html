@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Rooftop Flow — a first-person rooftop parkour run in the browser." />
+    <title>Rooftop Flow</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fff'/%3E%3Cpath d='M6 26 L18 6 L24 6 L12 26 Z' fill='%23e0211b'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="./assets/index-DcsRHxZt.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DKmeIb5q.css">
+  </head>
+  <body>
+    <div id="app">
+      <div id="viewport"></div>
+
+      <!-- In-game HUD -->
+      <div id="hud" class="hidden">
+        <div id="crosshair"><span></span></div>
+        <div id="timer-box">
+          <div id="timer">0:00.00</div>
+          <div id="split"></div>
+        </div>
+        <div id="checkpoint-progress"></div>
+        <div id="toast"></div>
+        <div id="hint"></div>
+        <div id="debug" class="hidden"></div>
+      </div>
+
+      <div id="fade"></div>
+      <div id="speedlines"></div>
+
+      <!-- Loading -->
+      <div id="loading" class="screen">
+        <div class="loading-inner">
+          <div class="logo small"><span class="logo-word">ROOFTOP</span><span class="logo-slash"></span><span class="logo-word accent">FLOW</span></div>
+          <div class="loading-bar"><span></span></div>
+          <p class="muted">Building the city…</p>
+        </div>
+      </div>
+
+      <!-- Main menu -->
+      <div id="menu" class="screen hidden">
+        <div class="menu-panel">
+          <div class="logo"><span class="logo-word">ROOFTOP</span><span class="logo-slash"></span><span class="logo-word accent">FLOW</span></div>
+          <p class="tagline">Run the rooftops. Keep your momentum.</p>
+          <div class="menu-buttons">
+            <button class="btn primary" data-action="start">Start Run</button>
+            <button class="btn" data-action="controls">Controls</button>
+            <button class="btn" data-action="settings">Settings</button>
+          </div>
+          <div class="quick-settings">
+            <div class="setting">
+              <label for="menu-sensitivity">Mouse sensitivity</label>
+              <input type="range" id="menu-sensitivity" min="0.1" max="4" step="0.05" />
+              <output id="menu-out-sensitivity"></output>
+            </div>
+            <div class="setting">
+              <label>Camera motion</label>
+              <div class="toggle" id="menu-motion">
+                <button data-value="full">Full</button>
+                <button data-value="reduced">Reduced</button>
+              </div>
+            </div>
+          </div>
+          <div class="best-line">Best time <strong id="menu-best">—</strong></div>
+        </div>
+        <p class="menu-footer">Six rooftop sections · checkpoints · one red finish gate. Mouse + keyboard required.</p>
+      </div>
+
+      <!-- Pause menu -->
+      <div id="pause" class="screen hidden">
+        <div class="menu-panel compact">
+          <h2>Paused</h2>
+          <p class="muted" id="pause-status"></p>
+          <div class="menu-buttons">
+            <button class="btn primary" data-action="resume">Resume</button>
+            <button class="btn" data-action="restart-checkpoint">Restart from Checkpoint</button>
+            <button class="btn" data-action="restart-level">Restart Level</button>
+            <button class="btn" data-action="settings">Settings</button>
+            <button class="btn" data-action="controls">Controls</button>
+            <button class="btn ghost" data-action="quit">Quit to Menu</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finish screen -->
+      <div id="finish" class="screen hidden">
+        <div class="menu-panel compact finish-panel">
+          <div class="finish-kicker">Rooftop Flow</div>
+          <h2 class="finish-title">Level Complete</h2>
+          <div class="finish-time" id="finish-time">0:00.00</div>
+          <div class="finish-badge hidden" id="finish-badge">New best time</div>
+          <div class="finish-stats">
+            <div><span>Best</span><strong id="finish-best">—</strong></div>
+            <div><span>Respawns</span><strong id="finish-respawns">0</strong></div>
+          </div>
+          <ol class="splits" id="finish-splits"></ol>
+          <div class="menu-buttons row">
+            <button class="btn primary" data-action="restart-level">Restart</button>
+            <button class="btn" data-action="quit">Main Menu</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls panel -->
+      <div id="controls" class="screen overlay hidden">
+        <div class="menu-panel compact">
+          <h2>Controls</h2>
+          <table class="controls-table">
+            <tbody>
+              <tr><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></td><td>Move</td></tr>
+              <tr><td><kbd>Mouse</kbd></td><td>Look</td></tr>
+              <tr><td><kbd>Shift</kbd></td><td>Sprint (hold)</td></tr>
+              <tr><td><kbd>Space</kbd></td><td>Jump — hold for height · wall-jump while wall-running</td></tr>
+              <tr><td><kbd>C</kbd> / <kbd>Ctrl</kbd></td><td>Slide while running · crouch when slow</td></tr>
+              <tr><td><kbd>E</kbd></td><td>Vault low obstacles · climb ledges</td></tr>
+              <tr><td><kbd>R</kbd></td><td>Restart from last checkpoint</td></tr>
+              <tr><td><kbd>Esc</kbd></td><td>Pause / release mouse</td></tr>
+            </tbody>
+          </table>
+          <ul class="tips">
+            <li><strong>Wall run:</strong> jump along a wall while sprinting and keep holding <kbd>W</kbd>.</li>
+            <li><strong>Ledges:</strong> keep holding <kbd>W</kbd> in the air to pull yourself up.</li>
+            <li><strong>Momentum:</strong> slide out of landings by holding <kbd>C</kbd>; jump out of slides.</li>
+            <li><strong>Red</strong> marks the way: jump edges, wall-run panels, vault bars, the finish.</li>
+            <li>Prefer <kbd>C</kbd> to slide — <kbd>Ctrl</kbd>+<kbd>W</kbd> is a browser shortcut.</li>
+          </ul>
+          <div class="menu-buttons"><button class="btn primary" data-action="back">Back</button></div>
+        </div>
+      </div>
+
+      <!-- Settings panel -->
+      <div id="settings" class="screen overlay hidden">
+        <div class="menu-panel compact">
+          <h2>Settings</h2>
+          <div class="setting">
+            <label for="set-sensitivity">Mouse sensitivity</label>
+            <input type="range" id="set-sensitivity" min="0.1" max="4" step="0.05" />
+            <output id="out-sensitivity"></output>
+          </div>
+          <div class="setting">
+            <label>Camera motion</label>
+            <div class="toggle" id="set-motion">
+              <button data-value="full">Full</button>
+              <button data-value="reduced">Reduced</button>
+            </div>
+          </div>
+          <div class="setting">
+            <label for="set-fov">Field of view (horizontal)</label>
+            <input type="range" id="set-fov" min="75" max="115" step="1" />
+            <output id="out-fov"></output>
+          </div>
+          <div class="setting">
+            <label for="set-volume">Volume</label>
+            <input type="range" id="set-volume" min="0" max="1" step="0.05" />
+            <output id="out-volume"></output>
+          </div>
+          <div class="setting">
+            <label for="set-invert">Invert mouse Y</label>
+            <input type="checkbox" id="set-invert" />
+            <output></output>
+          </div>
+          <div class="menu-buttons"><button class="btn primary" data-action="back">Back</button></div>
+        </div>
+      </div>
+
+      <div id="error" class="screen hidden">
+        <div class="menu-panel compact">
+          <h2>Can't start</h2>
+          <p id="error-text" class="muted"></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

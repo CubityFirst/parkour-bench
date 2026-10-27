@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "slug": "opus-xhigh",
+  "title": "Rooftop Flow",
+  "blurb": "An L-shaped rooftop route with wall-runs, duct slides and five checkpoints to a red gate.",
+  "model": {
+    "family": "Opus 5.5",
+    "id": "claude-opus-5-5",
+    "provider": "claudeAgent",
+    "effort": "xhigh"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-27T19:33:52.733Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow.best.v1",
+    "rooftop-flow.bestSplits.v1",
+    "rooftop-flow.settings.v2"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Clean menu and HUD with key-cap hints; sprint advances to the first vault ledge. Model's bot completed the full route (45.7 s). Restarted from scratch after the first attempt was interrupted."
+  },
+  "fixRounds": [],
+  "notes": ""
+}
