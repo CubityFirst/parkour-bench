@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "slug": "opus-max",
+  "title": "Roofline",
+  "blurb": "Six rooftop sections with wall-runs, slides and a zipline to a red finish gate.",
+  "model": {
+    "family": "Opus 5.5",
+    "id": "claude-opus-5-5",
+    "provider": "claudeAgent",
+    "effort": "max"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-27T19:27:08.240Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "roofline-best-splits",
+    "roofline-best-time",
+    "roofline-settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Polished menu, HUD with checkpoint splits; sprint reaches the first vault barrier with an E prompt. Model's sim and headless autopilot completed the full route (sim 50.9 s). Restarted from scratch after the first attempt was interrupted."
+  },
+  "fixRounds": [],
+  "notes": ""
+}
