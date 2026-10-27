@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "glm-low",
+  "title": "Rooftop Flow",
+  "blurb": "Six sections to a red finish gate, with a 14 m billboard wall-run and vent-alley slides.",
+  "model": {
+    "family": "GLM-5.3-Flash",
+    "id": "opencode-go/glm-5.3-flash",
+    "provider": "opencode",
+    "effort": "low"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-27T15:43:13.982Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow-best",
+    "rooftop-flow-settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Stands on the start roof with a 'Hold SHIFT to sprint' toast; sprint drops to the next roof by 2 s and is on it near red blocks at 5 s. Greyer palette than the reference. No page errors."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

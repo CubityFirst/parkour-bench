@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROOFTOP FLOW</title>
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+    <canvas id="game-canvas"></canvas>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden">
+      <div id="crosshair"><span></span></div>
+      <div id="timer">0:00.00</div>
+      <div id="hint"></div>
+      <div id="checkpoint-toast"></div>
+      <div id="checkpoint-icons"></div>
+    </div>
+
+    <!-- Main menu -->
+    <div id="menu" class="overlay">
+      <h1 class="title">ROOFTOP<span> FLOW</span></h1>
+      <p class="subtitle">A first-person rooftop run</p>
+      <button id="btn-start" class="btn btn-primary">START RUN</button>
+      <button id="btn-controls" class="btn">CONTROLS</button>
+      <button id="btn-reset-best" class="btn btn-ghost small">Reset best time</button>
+      <div class="settings">
+        <label>
+          <span>Mouse sensitivity</span>
+          <input id="opt-sensitivity" type="range" min="0.4" max="2.6" step="0.1" value="1.0" />
+          <span id="sensitivity-value">1.0</span>
+        </label>
+        <label class="toggle">
+          <span>Camera motion</span>
+          <input id="opt-camera-motion" type="checkbox" checked />
+          <span class="toggle-text" id="camera-motion-value">Full</span>
+        </label>
+      </div>
+      <p class="best-line">Best time: <span id="menu-best">—</span></p>
+    </div>
+
+    <!-- Controls panel -->
+    <div id="controls-panel" class="overlay hidden">
+      <h2>CONTROLS</h2>
+      <table>
+        <tr><td class="key">WASD</td><td>Move</td></tr>
+        <tr><td class="key">Mouse</td><td>Look</td></tr>
+        <tr><td class="key">Shift</td><td>Sprint</td></tr>
+        <tr><td class="key">Space</td><td>Jump</td></tr>
+        <tr><td class="key">Ctrl / C</td><td>Slide</td></tr>
+        <tr><td class="key">E</td><td>Vault / interact</td></tr>
+        <tr><td class="key">R</td><td>Restart from checkpoint</td></tr>
+        <tr><td class="key">Esc</td><td>Pause</td></tr>
+      </table>
+      <button id="btn-controls-close" class="btn">BACK</button>
+    </div>
+
+    <!-- Pause menu -->
+    <div id="pause" class="overlay hidden">
+      <h2>PAUSED</h2>
+      <button id="btn-resume" class="btn btn-primary">RESUME</button>
+      <button id="btn-restart" class="btn">RESTART RUN</button>
+      <label class="toggle pause-setting">
+        <span>Mouse sensitivity</span>
+        <input id="opt-sensitivity-pause" type="range" min="0.4" max="2.6" step="0.1" value="1.0" />
+        <span id="sensitivity-value-pause">1.0</span>
+      </label>
+      <label class="toggle pause-setting">
+        <span>Camera motion</span>
+        <input id="opt-camera-motion-pause" type="checkbox" checked />
+        <span class="toggle-text" id="camera-motion-value-pause">Full</span>
+      </label>
+    </div>
+
+    <!-- Finish screen -->
+    <div id="finish" class="overlay hidden">
+      <h2 class="finish-title">LEVEL COMPLETE</h2>
+      <div class="finish-time" id="finish-time">0:00.00</div>
+      <p class="best-line">Best time: <span id="finish-best">—</span></p>
+      <p class="finish-note" id="finish-note"></p>
+      <button id="btn-again" class="btn btn-primary">RUN AGAIN</button>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
