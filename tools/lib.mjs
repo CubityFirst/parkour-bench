@@ -8,7 +8,8 @@ export const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const runsDir = join(root, 'runs');
 export const packagesDir = join(root, 'packages');
 export const briefDir = join(root, 'brief');
-export const EFFORTS = ['low', 'medium', 'high', 'xhigh', 'max'];
+// 'default' is for models that offer no effort setting (e.g. Kimi K2.7 Code).
+export const EFFORTS = ['low', 'medium', 'high', 'xhigh', 'max', 'default'];
 export const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 // `--key value` and `--flag` pairs; anything else is positional.
