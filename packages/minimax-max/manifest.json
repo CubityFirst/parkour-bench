@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "minimax-max",
+  "title": "Rooftop Flow",
+  "blurb": "A 240 m, six-section route with ten checkpoints, a 9.5 m wall-run gap and a red gate.",
+  "model": {
+    "family": "MiniMax M3.1 Flash",
+    "id": "opencode-go/minimax-m3.1-flash",
+    "provider": "opencode",
+    "effort": "max"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-28T00:18:50.984Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow.best-time",
+    "rooftop-flow.settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Dark menu with bloom toggle; bright white/blue city with red runner-vision; sprint reaches the first red crate with an E-to-vault prompt. Model's smoke bot completed the route (29.8 s)."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

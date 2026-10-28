@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROOFTOP FLOW</title>
+    <meta name="description" content="ROOFTOP FLOW - a fast first-person rooftop parkour game." />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230d1014'/%3E%3Cpath d='M5 25 L17 5 L27 5 L15 25 Z' fill='%23e8251c'/%3E%3C/svg%3E"
+    />
+    <script type="module" crossorigin src="./assets/index-D19F0Utq.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Yi_PznpH.css">
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+
+      <!-- ======================= IN-GAME HUD ======================= -->
+      <div id="hud" class="hud is-hidden">
+        <div class="crosshair" id="crosshair"><i></i></div>
+
+        <div class="hud-timer">
+          <span class="hud-timer-label">TIME</span>
+          <span class="hud-timer-value" id="timer">00:00.00</span>
+        </div>
+
+        <div class="toast" id="toast"></div>
+        <div class="hint" id="hint"></div>
+
+        <div class="hud-section">
+          <span class="hud-section-index" id="sectionIndex">01</span>
+          <span class="hud-section-name" id="sectionName">WARM UP</span>
+        </div>
+
+        <div class="hud-speed">
+          <div class="hud-speed-bar"><span id="speedFill"></span></div>
+          <div class="hud-speed-text"><span id="speedValue">0</span> M/S</div>
+        </div>
+
+        <div class="hud-keys" id="hudKeys">
+          <span><b>WASD</b> MOVE</span>
+          <span><b>SHIFT</b> SPRINT</span>
+          <span><b>SPACE</b> JUMP</span>
+          <span><b>CTRL</b> SLIDE</span>
+          <span><b>E</b> VAULT</span>
+          <span><b>R</b> CHECKPOINT</span>
+        </div>
+
+        <div class="vignette" id="vignette"></div>
+      </div>
+
+      <!-- ======================= MAIN MENU ======================= -->
+      <div id="menu" class="overlay">
+        <div class="overlay-grid"></div>
+        <div class="menu-panel">
+          <header class="brand">
+            <div class="brand-mark"></div>
+            <h1 class="brand-title">ROOFTOP<span>FLOW</span></h1>
+            <p class="brand-sub">FIRST PERSON ROOFTOP PARKOUR</p>
+          </header>
+
+          <div class="menu-actions">
+            <button class="btn btn-primary" id="btnStart">START RUN</button>
+            <button class="btn" id="btnControls">CONTROLS</button>
+          </div>
+
+          <div class="settings">
+            <label class="setting">
+              <span class="setting-name">MOUSE SENSITIVITY</span>
+              <span class="setting-value" id="sensValue">1.00</span>
+              <input type="range" id="sensSlider" min="0.3" max="3" step="0.05" value="1" />
+            </label>
+            <label class="setting">
+              <span class="setting-name">CAMERA MOTION</span>
+              <span class="setting-value" id="motionValue">100%</span>
+              <input type="range" id="motionSlider" min="0" max="1" step="0.05" value="1" />
+            </label>
+            <label class="setting setting-toggle">
+              <span class="setting-name">BLOOM</span>
+              <input type="checkbox" id="bloomToggle" checked />
+              <span class="switch" aria-hidden="true"></span>
+            </label>
+            <label class="setting setting-toggle">
+              <span class="setting-name">SOUND</span>
+              <input type="checkbox" id="soundToggle" checked />
+              <span class="switch" aria-hidden="true"></span>
+            </label>
+          </div>
+
+          <p class="menu-record">BEST TIME <span id="bestTime">--:--.--</span></p>
+        </div>
+      </div>
+
+      <!-- ======================= CONTROLS ======================= -->
+      <div id="controls" class="overlay is-hidden">
+        <div class="overlay-grid"></div>
+        <div class="menu-panel">
+          <h2 class="panel-title">CONTROLS</h2>
+          <ul class="controls-list">
+            <li><b>W A S D</b><span>Move</span></li>
+            <li><b>MOUSE</b><span>Look</span></li>
+            <li><b>SHIFT</b><span>Sprint</span></li>
+            <li><b>SPACE</b><span>Jump (hold for height)</span></li>
+            <li><b>CTRL / C</b><span>Slide</span></li>
+            <li><b>E</b><span>Vault / mantle</span></li>
+            <li><b>R</b><span>Restart from checkpoint</span></li>
+            <li><b>ESC</b><span>Pause &amp; release mouse</span></li>
+          </ul>
+          <p class="controls-note">
+            Hold <b>SPACE</b> longer to jump higher. Keep your momentum through jumps, slides and
+            wall runs &mdash; red paint marks the route.
+          </p>
+          <button class="btn btn-primary" id="btnControlsBack">BACK</button>
+        </div>
+      </div>
+
+      <!-- ======================= PAUSE ======================= -->
+      <div id="pause" class="overlay is-hidden">
+        <div class="overlay-grid"></div>
+        <div class="menu-panel">
+          <h2 class="panel-title">PAUSED</h2>
+          <div class="menu-actions">
+            <button class="btn btn-primary" id="btnResume">RESUME</button>
+            <button class="btn" id="btnCheckpoint">RESTART AT CHECKPOINT</button>
+            <button class="btn" id="btnRestart">RESTART LEVEL</button>
+            <button class="btn btn-ghost" id="btnQuit">MAIN MENU</button>
+          </div>
+          <div class="settings">
+            <label class="setting">
+              <span class="setting-name">MOUSE SENSITIVITY</span>
+              <span class="setting-value" id="sensValuePause">1.00</span>
+              <input type="range" id="sensSliderPause" min="0.3" max="3" step="0.05" value="1" />
+            </label>
+            <label class="setting">
+              <span class="setting-name">CAMERA MOTION</span>
+              <span class="setting-value" id="motionValuePause">100%</span>
+              <input type="range" id="motionSliderPause" min="0" max="1" step="0.05" value="1" />
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================= FINISH ======================= -->
+      <div id="complete" class="overlay is-hidden">
+        <div class="overlay-grid"></div>
+        <div class="menu-panel panel-complete">
+          <h2 class="panel-title panel-title-red">LEVEL COMPLETE</h2>
+          <div class="result-grid">
+            <div class="result">
+              <span class="result-label">FINISH TIME</span>
+              <span class="result-value" id="finalTime">00:00.00</span>
+            </div>
+            <div class="result">
+              <span class="result-label">BEST TIME</span>
+              <span class="result-value" id="finalBest">00:00.00</span>
+            </div>
+            <div class="result">
+              <span class="result-label">FALLS</span>
+              <span class="result-value" id="finalFalls">0</span>
+            </div>
+          </div>
+          <div class="menu-actions">
+            <button class="btn btn-primary" id="btnAgain">RUN AGAIN</button>
+            <button class="btn btn-ghost" id="btnMenu">MAIN MENU</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================= LOADING ======================= -->
+      <div id="loading" class="overlay overlay-solid">
+        <div class="loader">
+          <div class="brand-mark"></div>
+          <p>BUILDING THE CITY</p>
+          <span class="loader-bar"><i id="loaderFill"></i></span>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
