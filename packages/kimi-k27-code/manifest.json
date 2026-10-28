@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "slug": "kimi-k27-code",
+  "title": "Rooftop Flow",
+  "blurb": "Six rooftop sections with slides, vaults and wall-runs, checkpoints and a finish line.",
+  "model": {
+    "family": "Kimi K2.7 Code",
+    "id": "opencode-go/kimi-k2.7-code",
+    "provider": "opencode",
+    "effort": "default"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-28T00:45:59.753Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow-best"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "After fix round 1: spawns on the first rooftop facing the route; sprint reaches the first checkpoint ring at the edge of the gap (the harness never jumps). Simple flat-shaded look, sparse HUD. The model reported only a clean build before the fix round."
+  },
+  "fixRounds": [
+    {
+      "issue": "Player spawns 2 m from the back edge of the first platform facing -Z, away from the +Z route; idle view shows only background towers, sprint runs off the back. Reported with shoot.mjs repro.",
+      "at": "2026-10-28T00:36:09.867Z"
+    }
+  ],
+  "notes": ""
+}
