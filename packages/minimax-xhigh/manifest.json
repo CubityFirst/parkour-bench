@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "minimax-xhigh",
+  "title": "Rooftop Flow",
+  "blurb": "Twelve rooftops over 420 m: duct corridor, two wall-run gaps and a red finish gate.",
+  "model": {
+    "family": "MiniMax M3.1 Flash",
+    "id": "opencode-go/minimax-m3.1-flash",
+    "provider": "opencode",
+    "effort": "xhigh"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-28T00:17:32.676Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow.best.v1",
+    "rooftop-flow.settings.v1"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Dark menu, clean HUD and first-person arms; sprint reaches the first red vault box. The opening view is sparse (a large grey wall, little visible skyline). Model's bot completed the route in ~48 s."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

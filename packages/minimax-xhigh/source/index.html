@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d1117" />
+    <title>ROOFTOP FLOW</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f2f4f5'/%3E%3Crect x='4' y='18' width='24' height='4' fill='%23e0201c'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+
+      <!-- ============ In-game HUD ============ -->
+      <div id="hud" class="hud hidden" aria-hidden="true">
+        <div class="crosshair"><span></span><span></span><span></span><span></span></div>
+
+        <div class="hud-timer">
+          <span class="hud-label">TIME</span>
+          <span id="timer" class="hud-time">00:00.00</span>
+        </div>
+
+        <div class="hud-progress">
+          <div id="progress-fill" class="hud-progress-fill"></div>
+        </div>
+        <div id="progress-label" class="hud-progress-label">SECTION 1 / 6</div>
+
+        <div class="hud-speed">
+          <div class="hud-speed-track"><div id="speed-fill" class="hud-speed-fill"></div></div>
+          <span id="speed-text" class="hud-speed-text">0.0</span>
+        </div>
+
+        <div id="hint" class="hud-hint"></div>
+        <div id="toast" class="hud-toast"></div>
+      </div>
+
+      <!-- ============ Main menu ============ -->
+      <div id="menu" class="overlay">
+        <div class="panel panel-menu">
+          <div class="brand">
+            <div class="brand-mark"></div>
+            <h1 class="brand-title">ROOFTOP<span>FLOW</span></h1>
+            <p class="brand-sub">A first-person rooftop parkour run through the Meridian District.</p>
+          </div>
+
+          <div class="menu-actions">
+            <button id="btn-start" class="btn btn-primary">START RUN</button>
+            <button id="btn-controls" class="btn">CONTROLS</button>
+          </div>
+
+          <div id="menu-panel" class="menu-panel hidden"></div>
+
+          <div id="menu-settings" class="menu-settings"></div>
+
+          <div class="menu-foot">
+            <span id="menu-best">BEST —</span>
+            <span class="dot"></span>
+            <span>MOUSE LOOK ENABLED AFTER START</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ Pause menu ============ -->
+      <div id="pause" class="overlay hidden">
+        <div class="panel panel-pause">
+          <h2 class="panel-title">PAUSED</h2>
+          <div class="menu-actions">
+            <button id="btn-resume" class="btn btn-primary">RESUME</button>
+            <button id="btn-pause-restart" class="btn">RESTART FROM CHECKPOINT</button>
+            <button id="btn-pause-full" class="btn">RESTART LEVEL</button>
+            <button id="btn-pause-menu" class="btn btn-ghost">MAIN MENU</button>
+          </div>
+          <div id="pause-panel" class="menu-panel hidden"></div>
+        </div>
+      </div>
+
+      <!-- ============ Finish screen ============ -->
+      <div id="finish" class="overlay hidden">
+        <div class="panel panel-finish">
+          <div class="finish-bar"></div>
+          <h2 class="panel-title finish-title">LEVEL COMPLETE</h2>
+          <div class="finish-grid">
+            <div class="finish-cell">
+              <span class="finish-key">TIME</span>
+              <span id="finish-time" class="finish-val">00:00.00</span>
+            </div>
+            <div class="finish-cell">
+              <span class="finish-key">BEST</span>
+              <span id="finish-best" class="finish-val">00:00.00</span>
+            </div>
+          </div>
+          <div id="finish-rank" class="finish-rank">RANK —</div>
+          <div class="menu-actions">
+            <button id="btn-finish-restart" class="btn btn-primary">RUN AGAIN</button>
+            <button id="btn-finish-menu" class="btn btn-ghost">MAIN MENU</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ Loading ============ -->
+      <div id="loading" class="overlay overlay-solid">
+        <div class="loader">
+          <div class="loader-mark"></div>
+          <div class="loader-text">BUILDING THE DISTRICT</div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
