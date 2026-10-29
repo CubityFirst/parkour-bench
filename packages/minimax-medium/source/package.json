@@ -1,0 +1,27 @@
+{
+  "name": "rooftop-flow",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ROOFTOP FLOW - a fast first-person rooftop parkour game built with Three.js, TypeScript and Vite.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "node tools/mechanics.mjs && node tools/ui.mjs && node tools/smoke.mjs",
+    "test:mechanics": "node tools/mechanics.mjs",
+    "test:ui": "node tools/ui.mjs",
+    "test:level": "node tools/smoke.mjs",
+    "shots": "node tools/shots.mjs",
+    "perf": "node tools/perf.mjs"
+  },
+  "dependencies": {
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.169.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

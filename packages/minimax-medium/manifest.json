@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "slug": "minimax-medium",
+  "title": "ROOFTOP FLOW",
+  "blurb": "Nine rooftops in six sections, with raised ducts to slide under and a red finish gate.",
+  "model": {
+    "family": "MiniMax M3.1 Flash",
+    "id": "opencode-go/minimax-m3.1-flash",
+    "provider": "opencode",
+    "effort": "medium"
+  },
+  "status": "complete",
+  "brief": {
+    "file": "brief/prompt.txt",
+    "sha256": "7f8abe952cb82e14fb76ed7ef57e5ab839daa1a681bde8f611a146b98aa985d6"
+  },
+  "createdAt": "2026-10-29T11:07:10.593Z",
+  "entry": "dist/index.html",
+  "thumbnail": "thumbnail.webp",
+  "storageKeys": [
+    "rooftop-flow-best",
+    "rooftop-flow-settings"
+  ],
+  "storageDirect": [],
+  "build": {
+    "command": "vite build --base ./",
+    "ok": true,
+    "typecheck": "pass"
+  },
+  "verification": {
+    "pageErrors": [],
+    "replacementChars": 0,
+    "grounded": true,
+    "moves": true,
+    "notes": "Resumed once after the Go usage limit cut it off. Spawns grounded facing the route; sprint carries the player forward to the first raised duct, which needs a slide (same layout idea as minimax-high). Its own headless smoke test finishes the level in 58 s."
+  },
+  "fixRounds": [],
+  "notes": ""
+}

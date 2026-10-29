@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROOFTOP FLOW</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4f7fa'/%3E%3Cpath d='M16 6 L28 16 L16 26 L4 16 Z' fill='%23d8202c'/%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="viewport"></canvas>
+
+      <!-- ===================== In-game HUD ===================== -->
+      <div id="hud" class="hidden">
+        <div id="crosshair" aria-hidden="true">
+          <span class="ch-dot"></span>
+          <span class="ch-tick ch-t"></span>
+          <span class="ch-tick ch-b"></span>
+          <span class="ch-tick ch-l"></span>
+          <span class="ch-tick ch-r"></span>
+        </div>
+
+        <div id="hud-top">
+          <div id="section-label">SECTION 1 &middot; WARM UP</div>
+          <div id="timer">00:00.00</div>
+        </div>
+
+        <div id="speed-pips">
+          <div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div>
+        </div>
+
+        <div id="toast"></div>
+        <div id="hint"></div>
+        <div id="checkpoint-flash"></div>
+      </div>
+
+      <!-- ===================== Main menu ===================== -->
+      <div id="menu" class="overlay">
+        <div class="menu-inner">
+          <div class="brand">
+            <div class="brand-mark"></div>
+            <h1>ROOFTOP<span>FLOW</span></h1>
+            <p class="tagline">Run the white rooftops. Don't stop.</p>
+          </div>
+
+          <div class="menu-actions">
+            <button id="btn-start" class="btn btn-primary">START RUN</button>
+            <button id="btn-controls" class="btn">CONTROLS</button>
+          </div>
+
+          <div class="settings">
+            <label class="setting">
+              <span>MOUSE SENSITIVITY</span>
+              <input id="opt-sens" type="range" min="0.4" max="3" step="0.05" value="1" />
+              <output id="opt-sens-val">1.00</output>
+            </label>
+            <label class="setting">
+              <span>CAMERA MOTION</span>
+              <input id="opt-motion" type="range" min="0" max="1" step="0.05" value="1" />
+              <output id="opt-motion-val">100%</output>
+            </label>
+            <label class="setting">
+              <span>MASTER VOLUME</span>
+              <input id="opt-volume" type="range" min="0" max="1" step="0.05" value="0.7" />
+              <output id="opt-volume-val">70%</output>
+            </label>
+          </div>
+
+          <div class="best-row">BEST TIME <span id="menu-best">--:--.--</span></div>
+          <div class="footer-hint">Click to lock the mouse &middot; ESC to pause</div>
+        </div>
+      </div>
+
+      <!-- ===================== Controls ===================== -->
+      <div id="controls" class="overlay hidden">
+        <div class="menu-inner narrow">
+          <h2 class="panel-title">CONTROLS</h2>
+          <ul class="key-list">
+            <li><span>W A S D</span><em>Move</em></li>
+            <li><span>MOUSE</span><em>Look</em></li>
+            <li><span>SHIFT</span><em>Sprint</em></li>
+            <li><span>SPACE</span><em>Jump (hold for height)</em></li>
+            <li><span>CTRL / C</span><em>Slide</em></li>
+            <li><span>E</span><em>Vault / interact</em></li>
+            <li><span>R</span><em>Respawn at checkpoint</em></li>
+            <li><span>ESC</span><em>Pause</em></li>
+          </ul>
+          <p class="tip">Keep your momentum. Red marks the route: red ledges are takeoff points, red panels are wall-runnable, red ducts are slide-throughs, red gates are checkpoints.</p>
+          <button id="btn-controls-back" class="btn btn-primary">BACK</button>
+        </div>
+      </div>
+
+      <!-- ===================== Pause ===================== -->
+      <div id="pause" class="overlay hidden">
+        <div class="menu-inner narrow">
+          <h2 class="panel-title">PAUSED</h2>
+          <div class="pause-stats">
+            <div><label>TIME</label><span id="pause-time">00:00.00</span></div>
+            <div><label>CHECKPOINT</label><span id="pause-cp">START</span></div>
+            <div><label>BEST</label><span id="pause-best">--:--.--</span></div>
+          </div>
+          <div class="settings">
+            <label class="setting">
+              <span>MOUSE SENSITIVITY</span>
+              <input id="opt-sens-2" type="range" min="0.4" max="3" step="0.05" value="1" />
+              <output id="opt-sens-val-2">1.00</output>
+            </label>
+            <label class="setting">
+              <span>CAMERA MOTION</span>
+              <input id="opt-motion-2" type="range" min="0" max="1" step="0.05" value="1" />
+              <output id="opt-motion-val-2">100%</output>
+            </label>
+            <label class="setting">
+              <span>MASTER VOLUME</span>
+              <input id="opt-volume-2" type="range" min="0" max="1" step="0.05" value="0.7" />
+              <output id="opt-volume-val-2">70%</output>
+            </label>
+          </div>
+          <div class="menu-actions column">
+            <button id="btn-resume" class="btn btn-primary">RESUME</button>
+            <button id="btn-checkpoint" class="btn">RESTART FROM CHECKPOINT</button>
+            <button id="btn-restart" class="btn">RESTART LEVEL</button>
+            <button id="btn-quit" class="btn btn-ghost">MAIN MENU</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== Finish ===================== -->
+      <div id="finish" class="overlay hidden">
+        <div class="menu-inner narrow">
+          <h2 class="panel-title accent">LEVEL COMPLETE</h2>
+          <div class="finish-time" id="finish-time">00:00.00</div>
+          <div class="finish-rows">
+            <div><label>BEST TIME</label><span id="finish-best">--:--.--</span></div>
+            <div id="finish-newbest" class="new-best hidden">NEW PERSONAL BEST</div>
+          </div>
+          <div class="menu-actions column">
+            <button id="btn-again" class="btn btn-primary">RUN AGAIN</button>
+            <button id="btn-menu" class="btn btn-ghost">MAIN MENU</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== Loading ===================== -->
+      <div id="loading" class="overlay">
+        <div class="loading-inner">
+          <div class="brand-mark big"></div>
+          <div class="loading-text">BUILDING THE CITY</div>
+          <div class="loading-bar"><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
